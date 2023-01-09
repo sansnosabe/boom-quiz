@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 15rem auto 10rem;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+header,
+main,
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  grid-area: "header";
+  background-color: #398e99;
+}
+
+header img {
+  width: 150px;
+  height: 150px;
+}
+
+header h1 {
+  font-size: 6rem;
+  color: #851616;
+}
+
+main {
+  grid-area: "main";
+  background-color: #00e1ff;
+}
+
+footer {
+  grid-area: "footer";
+  background-color: #a2dee6;
+}
