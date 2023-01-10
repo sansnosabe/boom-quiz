@@ -9,19 +9,77 @@ async function getJSON() {
   }
 }
 
-async function iterarArray() {
-  const data = await getJSON();
+async function iterateArray() {
+  const jsonArray = await getJSON();
 
+  const value = jsonArray.map((entries, i) => {
+    const question = entries.question
+    const answers = entries.answers
+    const indexQuestions = i
+    return { question, answers, indexQuestions }
+  })
 
-  for (const [key, value] of Object.entries(data)) {
-    console.log(`${key}: ${value}`);
-  }
+  const sectionParent = document.querySelector("#my-section header")
+  const containerQuestions = document.querySelector("#container-preguntas")
 
-  // console.log(question);
-  // return question;
+  value.forEach(element => {
+    const index = Object.keys(jsonArray).findIndex(key => jsonArray[key].question === element.question)
+
+    if (element.indexQuestions === index) {
+
+      const questionTitleH2 = document.createElement('h2')
+      sectionParent.appendChild(questionTitleH2)
+      questionTitleH2.textContent = element.question
+
+      element.answers.forEach(answer => {
+        const buttonAnswers = document.createElement('button')
+        buttonAnswers.textContent = answer
+        containerQuestions.appendChild(buttonAnswers)
+      })
+    }
+  })
 }
+iterateArray()
 
-iterarArray()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// async function iterateArray() {
+//   const jsonArray = await getJSON();
+
+//   const value = jsonArray.map((entries, i) => {
+//     const question = entries.question
+//     const answerAndCorrect = [entries.answers, entries.correct]
+//     const indexQuestions = i
+//     return { question, answerAndCorrect, indexQuestions }
+//   })
+//   //Si indexQuestions es igual al Object keys de entries.question devuelve en el DOM un h2 con el question, un boton por cada entries.answer
+
+
+//   if (value.map(elem => elem.indexQuestions) === index) {
+//     console.log("hola")
+//   }
+
+// }
+
+// iterateArray()
 
 // async function generateQuestions() {
 //   const array = await iterarArray();
