@@ -16,7 +16,7 @@ font-family: 'Rubik 80s Fade', cursive; */
 body {
   height: 100vh;
   display: grid;
-  grid-template-columns: 100vw;
+  grid-template-columns: 100%;
   grid-template-rows: 10rem auto 5rem;
   grid-template-areas:
     "header"
@@ -61,48 +61,39 @@ main {
 }
 
 section {
-  height: 100%;
-  padding: 2rem 2rem;
-}
-
-section header {
-  background-color: white;
-  flex-direction: column;
-
-}
-
-section header img {
-  width: 10rem;
-  aspect-ratio: square;
-}
-
-section h2 {
-  font-size: 1.5em;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  padding-bottom: 1rem;
-}
-
-section {
   display: grid;
-  gap: 1rem;
-  grid-template-rows: repeat(4, 1fr);
+  gap: 2rem;
+  padding: 0 2rem;
+  margin: 2rem 0;
 }
 
-button {
+article {
+  display: grid;
+  gap: 0.5rem;
   padding: 1rem;
+  background-color: #2962dd;
+}
+
+article h2 {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
+  padding: 1rem;
+}
+
+article button {
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 100px;
   border: 3px solid #2962dd;
   background-color: #0a0042;
   color: white;
-  font-size: 1rem;
-  border-radius: 100px;
 }
 
-section footer {
-  font-size: 2rem;
-  height: 10rem;
-}
-
+/* section header img {
+  width: 10rem;
+  aspect-ratio: square;
+} */
 
 /**********************/
 /******* FOOTER *******/
