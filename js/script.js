@@ -5,46 +5,33 @@ async function getJSON() {
     const response = await fetch(URL);
     return await response.json();
   } catch (error) {
-    console.error(message.error)
+    console.error(error.message)
   }
 }
 
 async function iterarArray() {
   const data = await getJSON();
-  const question = data.map((element, i) => {
-    return {
-      "question": element.question,
-      "answer": element.answers,
-      "correct": element.correct,
-      "index": i
-    }
-  });
-  return question;
+
+  if (data.)
+
+  // console.log(question);
+  // return question;
 }
 
-async function generateQuestions() {
-  const array = await iterarArray();
+iterarArray()
 
-  const questionsIndex = array.find(element => element.index === 0);
+// async function generateQuestions() {
+//   const array = await iterarArray();
 
-  if (questionsIndex) {
-    const questionTitle = document.querySelector('main h1');
-    questionTitle.innerHTML = questionsIndex.question;
+//   const questionsIndex = array.find(element => element.index === 0);
 
-    const answerTitle = document.querySelector('main button');
-    answerTitle.innerHTML = questionsIndex.answer;
+//   if (questionsIndex) {
+//     const questionTitle = document.querySelector('main section header h2');
+//     questionTitle.innerHTML = questionsIndex.question;
+//   }
 
-  }
-}
+//   return questionsIndex
+// }
 
-generateQuestions();
+// generateQuestions();
 
-async function getPeticion() {
-  const response = await fetch('https://raw.githubusercontent.com/Cjavierlopez/REP-DeliveriesHAB/main/projectONE/questions-images/question01.png');
-  const image = await response.blob();
-
-  const imagen = document.querySelector('main img');
-  imagen.src = URL.createObjectURL(image);
-  imagen.alt = "portada peliculas";
-}
-getPeticion()
