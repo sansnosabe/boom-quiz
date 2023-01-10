@@ -12,7 +12,10 @@ async function getJSON() {
 async function iterarArray() {
   const data = await getJSON();
 
-  if (data.)
+
+  for (const [key, value] of Object.entries(data)) {
+    console.log(`${key}: ${value}`);
+  }
 
   // console.log(question);
   // return question;
