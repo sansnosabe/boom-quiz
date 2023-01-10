@@ -25,15 +25,17 @@ async function iterateArray() {
     const index = Object.keys(jsonArray).findIndex(key => jsonArray[key].question === element.question)
 
     if (element.indexQuestions === index) {
+      const article = document.createElement('article')
+      section.appendChild(article)
 
       const questionTitleH2 = document.createElement('h2')
-      section.appendChild(questionTitleH2)
+      article.appendChild(questionTitleH2)
       questionTitleH2.textContent = element.question
 
       element.answers.forEach(answer => {
         const buttonAnswers = document.createElement('button')
         buttonAnswers.textContent = answer
-        section.appendChild(buttonAnswers)
+        article.appendChild(buttonAnswers)
       })
     }
   })
