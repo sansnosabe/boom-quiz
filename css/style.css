@@ -39,7 +39,11 @@ footer {
 
 header {
   grid-area: "header";
-  background-color: #f16615;
+  background-image: url(/img/banner/1354.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background-color: #f16615; */
 }
 
 header img {
@@ -51,7 +55,7 @@ header h1 {
   font-size: 3rem;
   margin-top: 25px;
   font-family: 'Rubik 80s Fade';
-  color: #ece905;
+  color: #a84e04;
 }
 
 /********************/
