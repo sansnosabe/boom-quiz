@@ -43,6 +43,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  /* background-color: #f16615; */
 }
 
 header img {
@@ -73,28 +74,9 @@ section {
 article {
   display: grid;
   gap: 0.5rem;
+  padding: 1rem;
   background-color: #bebebe6e;
   border-radius: 20px;
-}
-
-.questions {
-  display: grid;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-radius: 20px;
-}
-
-figure {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 1rem;
-  overflow: hidden;
-}
-
-figure img {
-  width: 80%;
-  border-radius: 20px;
-  aspect-ratio: square;
 }
 
 article h2 {
@@ -119,6 +101,10 @@ article button:hover {
   transition: 200ms;
 }
 
+/* section header img {
+  width: 10rem;
+  aspect-ratio: square;
+} */
 
 /**********************/
 /******* FOOTER *******/
@@ -129,7 +115,7 @@ footer {
   background-color: #f16615;
 }
 
-@media (min-width: 426px) {
+@media (min-width: 425px) {
   header img {
     width: 9em;
   }
@@ -152,19 +138,5 @@ footer {
   header h1 {
     font-size: 6rem;
     margin-top: 50px;
-  }
-
-  article {
-    padding: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  figure {
-    padding-bottom: 0;
-  }
-
-  figure img {
-    width: 100%;
-    aspect-ratio: square;
   }
 }
