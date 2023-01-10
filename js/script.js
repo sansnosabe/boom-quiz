@@ -19,8 +19,7 @@ async function iterateArray() {
     return { question, answers, indexQuestions }
   })
 
-  const sectionParent = document.querySelector("#my-section header")
-  const containerQuestions = document.querySelector("#container-preguntas")
+  const section = document.querySelector("section")
 
   value.forEach(element => {
     const index = Object.keys(jsonArray).findIndex(key => jsonArray[key].question === element.question)
@@ -28,13 +27,13 @@ async function iterateArray() {
     if (element.indexQuestions === index) {
 
       const questionTitleH2 = document.createElement('h2')
-      sectionParent.appendChild(questionTitleH2)
+      section.appendChild(questionTitleH2)
       questionTitleH2.textContent = element.question
 
       element.answers.forEach(answer => {
         const buttonAnswers = document.createElement('button')
         buttonAnswers.textContent = answer
-        containerQuestions.appendChild(buttonAnswers)
+        section.appendChild(buttonAnswers)
       })
     }
   })
