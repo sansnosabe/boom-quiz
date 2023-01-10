@@ -76,20 +76,20 @@ section header img {
   aspect-ratio: square;
 }
 
-section header h2 {
+section h2 {
   font-size: 1.5em;
   text-align: center;
   font-family: 'Roboto', sans-serif;
   padding-bottom: 1rem;
 }
 
-#container-preguntas {
+section {
   display: grid;
   gap: 1rem;
   grid-template-rows: repeat(4, 1fr);
 }
 
-#container-preguntas button {
+button {
   padding: 1rem;
   border: 3px solid #2962dd;
   background-color: #0a0042;
