@@ -28,14 +28,27 @@ async function iterateArray() {
       const article = document.createElement('article')
       section.appendChild(article)
 
+      const div = document.createElement('div')
+      article.appendChild(div).classList.add("questions")
+
+      const figure = document.createElement('figure')
+      article.appendChild(figure)
+
+      const index00 = index.toString().padStart(2, '0');
+
+      const image = document.createElement('img')
+      image.src = `img/questions-images/question-${index00}.png`;
+      image.alt = "caratula de pelicula";
+      figure.appendChild(image)
+
       const questionTitleH2 = document.createElement('h2')
-      article.appendChild(questionTitleH2)
+      div.appendChild(questionTitleH2)
       questionTitleH2.textContent = element.question
 
       element.answers.forEach(answer => {
         const buttonAnswers = document.createElement('button')
         buttonAnswers.textContent = answer
-        article.appendChild(buttonAnswers)
+        div.appendChild(buttonAnswers)
       })
     }
   })

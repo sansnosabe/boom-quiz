@@ -51,7 +51,7 @@ header img {
 }
 
 header h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-top: 25px;
   font-family: 'Rubik 80s Fade';
   color: #b44a0c;
@@ -98,16 +98,20 @@ figure img {
 }
 
 article h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  font-size: 1.5em;
-  padding: 1rem;
+  font-size: 1.3em;
+  padding: 01rem;
 }
 
 article button {
   padding: 1rem;
+  margin: 0 1rem;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 100px;
+  border-radius: 20px;
   border: 3px solid #5d89e6;
   background-color: #c2dae8;
   color: #000;
@@ -135,12 +139,12 @@ footer {
   }
 
   header h1 {
-    font-size: 4rem;
+    font-size: 5rem;
     margin-top: 40px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 918px) {
   body {
     grid-template-rows: 15rem auto 5rem;
   }
@@ -150,11 +154,12 @@ footer {
   }
 
   header h1 {
-    font-size: 6rem;
+    font-size: 8rem;
     margin-top: 50px;
   }
 
   article {
+    margin: 0 3rem;
     padding: 1rem;
     grid-template-columns: repeat(2, 1fr);
   }
@@ -167,4 +172,83 @@ footer {
     width: 100%;
     aspect-ratio: square;
   }
+}
+
+
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 10rem;
+    margin-top: 50px;
+  }
+
+  article h2 {
+    font-size: 1.5em;
+  }
+
+  article button {
+    font-size: 1.1rem;
+  }
+
+}
+
+@media (min-width: 1220px) {
+  article {
+    margin: 0 10rem;
+  }
+
+  article h2 {
+    font-size: 2rem;
+  }
+
+  article button {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  body {
+    grid-template-rows: 25rem auto 5rem;
+  }
+
+  header img {
+    width: 25em;
+  }
+
+  header h1 {
+    font-size: 15rem;
+    margin-top: 80px;
+
+  }
+
+  article {
+    gap: 0.5rem;
+    background-color: #bebebe6e;
+    border-radius: 20px;
+    padding: 5rem;
+    margin: 6rem;
+  }
+
+  article h2 {
+    font-size: 3.4rem;
+  }
+
+  article button {
+    font-size: 3rem;
+  }
+}
+
+
+
+/* 
+header h1 {
+  font-size: 10rem;
+  margin-top: 50px;
+}
+
+article h2 {
+  font-size: 4rem;
+}
+
+article button {
+  font-size: 3rem;
 }
