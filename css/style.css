@@ -4,6 +4,9 @@
 /***********************/
 /******* GENERAL *******/
 /***********************/
+/* ::-webkit-scrollbar {
+  display: none;
+} */
 
 :root {
   --main-color: #ffb070ea;
@@ -29,8 +32,9 @@
 body {
   height: 100vh;
   font-family: 'Roboto', sans-serif;
-  background-image: url(/img/banner/banner.jpg);
+  background-image: url(/img/banner/banner3.jpg);
   display: grid;
+  /*Firefox*/
   grid-template-columns: 100%;
   grid-template-rows: auto auto 5rem;
   grid-template-areas:
@@ -209,7 +213,7 @@ footer {
   }
 
   .questions {
-    padding: 0 2rem;
+    padding: 0 4rem;
   }
 
   .questions button {
