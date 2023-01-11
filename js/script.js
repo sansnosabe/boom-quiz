@@ -28,29 +28,40 @@ async function iterateArray() {
       const article = document.createElement('article')
       section.appendChild(article)
 
-      const div = document.createElement('div')
-      article.appendChild(div).classList.add("questions")
+      const header = document.createElement('header')
+      article.appendChild(header)
+
+      const main = document.createElement('main')
+      article.appendChild(main)
+
+      const questionTitleH2 = document.createElement('h2')
+      header.appendChild(questionTitleH2)
+      questionTitleH2.textContent = element.question
+
+      const divQuestions = document.createElement('div')
+      main.appendChild(divQuestions).classList.add("questions")
 
       const figure = document.createElement('figure')
-      article.appendChild(figure)
+      main.appendChild(figure)
 
-      const index00 = index.toString().padStart(2, '0');
+      const indexImage = index.toString().padStart(2, '0');
 
       const image = document.createElement('img')
-      image.src = `img/questions-images/question-${index00}.png`;
+      image.src = `img/questions-images/question-${indexImage}.png`;
       image.alt = "caratula de pelicula";
       figure.appendChild(image)
 
-      const questionTitleH2 = document.createElement('h2')
-      div.appendChild(questionTitleH2)
-      questionTitleH2.textContent = element.question
+
 
       element.answers.forEach(answer => {
         const buttonAnswers = document.createElement('button')
         buttonAnswers.textContent = answer
-        div.appendChild(buttonAnswers)
+        divQuestions.appendChild(buttonAnswers)
       })
     }
   })
 }
 iterateArray()
+
+
+
