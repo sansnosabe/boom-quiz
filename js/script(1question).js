@@ -69,6 +69,11 @@ function createElementsFromArray(jsonArray) {
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
                 buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
+                Array.from(divQuestions.children).forEach(btn => {
+                  if (btn !== buttonAnswers) {
+                    btn.style.backgroundColor = "#ce1818"
+                  }
+                });
               } else {
                 buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
                 Array.from(divQuestions.children).forEach(btn => {

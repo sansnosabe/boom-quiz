@@ -63,12 +63,17 @@ function createElementsFromArray(jsonArray) {
 
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
-                buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
+                buttonAnswers.style.backgroundColor = "#068b06"; //verde oscuro
+                Array.from(divQuestions.children).forEach(btn => {
+                  if (btn !== buttonAnswers) {
+                    btn.style.backgroundColor = "#ce1818"
+                  }
+                });
               } else {
                 buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
                 Array.from(divQuestions.children).forEach(btn => {
                   if (btn !== buttonAnswers && btn.textContent === element.correct) {
-                    btn.style.backgroundColor = "#068b06"; //verde claro
+                    btn.style.backgroundColor = "#0aaf0a"; //verde claro
                   } else if (btn !== buttonAnswers) {
                     btn.style.backgroundColor = "#ce1818"; //rojo claro
                   }

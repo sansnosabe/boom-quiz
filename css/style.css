@@ -9,10 +9,10 @@
 } */
 
 :root {
-  --main-color: #ffb070ea;
+  --button-color: #ffc244;
   --text-color: #191718;
   --border-radius: 20px;
-  --shadow:
+  --title-shadow:
     -3px -3px 0 #db2929,
     3px -3px 0 #db5b29,
     -3px 3px 0 #db7929,
@@ -21,6 +21,15 @@
     6px 6px 0 var(--text-color),
     7px 7px 0 var(--text-color),
     8px 8px 0 var(--text-color);
+  --box-shadow:
+    -6px -6px 0#db2929,
+    6px -6px 0 #db5b29,
+    -6px 6px 0 #db7929,
+    6px 6px 0 #dba329,
+    8px 8px 0 var(--text-color),
+    9px 9px 0 var(--text-color),
+    10px 10px 0 var(--text-color),
+    11px 11px 0 var(--text-color);
 }
 
 * {
@@ -70,7 +79,7 @@ header img {
 header h1 {
   font-size: 4.5rem;
   font-family: 'Rubik 80s Fade';
-  text-shadow: var(--shadow);
+  text-shadow: var(--title-shadow);
 }
 
 /********************/
@@ -79,6 +88,7 @@ header h1 {
 main {
   grid-area: "main";
 }
+
 
 section {
   display: grid;
@@ -92,12 +102,20 @@ article {
   gap: 0.5rem;
   background-color: #ffffff9d;
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+  box-shadow: var(--box-shadow);
+  /* -6px -6px 0#db2929,
+    6px -6px 0 #db5b29,
+    -6px 6px 0 #db7929,
+    6px 6px 0 #dba329,
+    8px 8px 0 var(--text-color),
+    9px 9px 0 var(--text-color),
+    10px 10px 0 var(--text-color),
+    11px 11px 0 var(--text-color); */
   overflow: hidden;
 }
 
 article header {
-  background-color: #ff000071;
+  background-color: #f36614a1;
 }
 
 article header h2 {
@@ -124,12 +142,12 @@ article .questions button {
   font-weight: 700;
   border: none;
   border-radius: var(--border-radius);
-  background-color: var(--main-color);
+  background-color: var(--button-color);
   box-shadow: 9px 9px 16px -1px #545454;
 }
 
 article .questions button:hover {
-  background-color: #ee6a1ed7;
+  background-color: #ff972d;
   cursor: pointer;
   transition: 200ms;
 }
@@ -138,7 +156,7 @@ figure {
   display: flex;
   justify-content: center;
   overflow: hidden;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 figure img {
@@ -146,7 +164,7 @@ figure img {
   height: 100%;
   overflow: hidden;
   border-radius: var(--border-radius);
-  box-shadow: 9px 9px 16px -1px #545454;
+  box-shadow: 7px 7px 9px -1px #545454;
 }
 
 /**********************/
@@ -173,6 +191,9 @@ footer {
 }
 
 @media (min-width: 600px) {
+  article header h2 {
+    padding: 1rem 3rem;
+  }
 
   .questions {
     padding: 1rem 4rem;
@@ -181,6 +202,8 @@ footer {
   figure {
     padding: 1rem 4rem;
   }
+
+
 }
 
 @media (min-width: 775px) {
@@ -211,7 +234,7 @@ footer {
   }
 
   .questions {
-    padding: 0 3rem;
+    padding: 2rem;
   }
 
   .questions button {
