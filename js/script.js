@@ -36,7 +36,7 @@ async function iterateArray() {
 
           const questionTitleH2 = document.createElement('h2')
           header.appendChild(questionTitleH2)
-          questionTitleH2.textContent = element.question
+          questionTitleH2.textContent = `${index + 1}. ${element.question}`
 
           const divQuestions = document.createElement('div')
           main.appendChild(divQuestions).classList.add("questions")
