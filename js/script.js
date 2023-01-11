@@ -1,16 +1,25 @@
 const URL = 'https://gist.githubusercontent.com/bertez/2528edb2ab7857dae29c39d1fb669d31/raw/4891dde8eac038aa5719512adee4b4243a8063fd/quiz.json';
 
-async function getJSON() {
+// Función asincrona, hace la petición y nos devuelve los datos en formato JSON.
+async function fetchJSON() {
   try {
     const response = await fetch(URL);
     return await response.json();
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   }
 }
 
-async function iterateArray() {
-  const jsonArray = await getJSON();
+// Se encarga de gestionar el orden en que se ejecuta el programa llamando a fetchJSON() y createElementsFromArray(jsonArray)
+//Estas funciones son llamadas en un orden específico para asegurar que se obtengan los datos desde la URL y se creen los elementos en el DOM en el orden correcto.
+async function main() {
+  const jsonArray = await fetchJSON();
+  createElementsFromArray(jsonArray)
+}
+main()
+
+// Se encarga de crear los elementos del DOM a partir del array de datos.
+function createElementsFromArray(jsonArray) {
   if (jsonArray) {
     const value = jsonArray.map((entries, i) => {
       const question = entries.question
@@ -61,7 +70,9 @@ async function iterateArray() {
     }
   }
 }
-iterateArray()
+
+
+
 
 
 
