@@ -87,6 +87,7 @@ header h1 {
 /********************/
 main {
   grid-area: "main";
+  padding-bottom: 2rem;
 }
 
 
@@ -215,6 +216,7 @@ footer {
     font-size: 9rem;
     margin-top: 30px;
   }
+
 
   section {
     gap: 4rem;
