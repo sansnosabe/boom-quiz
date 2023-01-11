@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+80s+Fade&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Arvo:700');
+
+
+/* font-family: 'Press Start 2P', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Rubik 80s Fade', cursive; */
+
+/***********************/
+/******* GENERAL *******/
+/***********************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  /* background-color: #ffd200; */
+  background-image: url(/img/banner/banner3.jpg);
+  font-family: 'Roboto', sans-serif;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto 5rem;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+header,
+main,
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/**********************/
+/******* HEADER *******/
+/**********************/
+
+header {
+  grid-area: "header";
+  /* background-image: url(/img/banner/banner3.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+header img {
+  width: 8em;
+  margin-left: 30px;
+  aspect-ratio: square;
+}
+
+header h1 {
+  font-size: 5rem;
+  font-family: 'Rubik 80s Fade';
+  /* color: #b44a0c; */
+  color: #222;
+  text-shadow:
+    -3px -3px 0 #db2929,
+    3px -3px 0 #db5b29,
+    -3px 3px 0 #db7929,
+    3px 3px 0 #dba329,
+    4px 4px 0 #222,
+    5px 5px 0 #222,
+    6px 6px 0 #222,
+    7px 7px 0 #222;
+}
+
+/********************/
+/******* MAIN *******/
+/********************/
+main {
+  grid-area: "main";
+  position: relative;
+}
+
+article {
+  display: grid;
+  gap: 0.5rem;
+  border: 1px solid #222;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #ffffff9d;
+  box-shadow:
+    -3px -3px 0 #db2929,
+    3px -3px 0 #db5b29,
+    -3px 3px 0 #db7929,
+    3px 3px 0 #dba329,
+    5px 5px 0 #222,
+    6px 6px 0 #222,
+    7px 7px 0 #222,
+    8px 8px 0 #222;
+}
+
+article header {
+  background-color: rgba(255, 0, 0, 0.445);
+}
+
+article header h2 {
+  text-align: center;
+  font-size: 1.3em;
+  padding: 0.5rem;
+}
+
+article main {
+  display: grid;
+  padding: 0.7rem;
+}
+
+article button {
+  padding: 1.3rem 1rem;
+  margin: 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 20px;
+  border: none;
+  background-color: #ffb070ea;
+  color: #000;
+  box-shadow: 9px 9px 16px -1px #545454;
+}
+
+article button:hover {
+  background-color: #ee6a1ed7;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+section {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.questions {
+  display: grid;
+  gap: 1rem;
+  padding: 0 0.7rem;
+  border-radius: 20px;
+}
+
+figure {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+figure img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 9px 9px 16px -1px #545454;
+}
+
+/**********************/
+/******* FOOTER *******/
+/**********************/
+footer {
+  grid-area: "footer";
+  font-weight: 600;
+  background-color: #f16615;
+}
+
+
+/*********************/
+/******* MEDIA *******/
+/*********************/
+@media (min-width: 424px) {
+  header img {
+    font-size: 1.1rem;
+  }
+
+  header h1 {
+    font-size: 6rem;
+  }
+
+  article header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 600px) {
+
+  .questions {
+    padding: 1rem 4rem;
+  }
+
+  figure {
+    padding: 1rem 4rem;
+  }
+}
+
+@media (min-width: 775px) {
+  header {
+    flex-direction: row;
+  }
+
+  header img {
+    font-size: 1.3rem;
+  }
+
+  header h1 {
+    font-size: 8rem;
+    margin-top: 30px;
+  }
+
+  section {
+    gap: 4rem;
+  }
+
+  article {
+    max-width: 900px;
+  }
+
+  article main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  article header h2 {
+    font-size: 2rem;
+  }
+
+  .questions {
+    padding: 0 2rem;
+  }
+
+  .questions button {
+    min-width: 250px;
+  }
+}
