@@ -20,6 +20,9 @@ main()
 
 // Se encarga de crear los elementos del DOM a partir del array de datos.
 function createElementsFromArray(jsonArray) {
+  let currentQuestion = 0;
+  let articles = []
+
   if (jsonArray) {
     const value = jsonArray.map((entries, i) => {
       const question = entries.question
@@ -43,6 +46,7 @@ function createElementsFromArray(jsonArray) {
           const figure = document.createElement('figure')
           const indexImage = index.toString().padStart(2, '0');
           const image = document.createElement('img')
+          articles.push(article);
 
           section.appendChild(article)
           article.appendChild(header)
@@ -52,6 +56,7 @@ function createElementsFromArray(jsonArray) {
           main.appendChild(figure)
           figure.appendChild(image)
 
+          article.style.display = (index === currentQuestion) ? "block" : "none"
           questionTitleH2.textContent = `${index + 1}. ${element.question}`
           image.src = `img/questions-images/question-${indexImage}.png`;
           image.alt = "caratula de pelicula";
@@ -63,32 +68,36 @@ function createElementsFromArray(jsonArray) {
 
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
-                buttonAnswers.style.backgroundColor = "#068b06"; //verde oscuro
+                buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
                 Array.from(divQuestions.children).forEach(btn => {
                   if (btn !== buttonAnswers) {
                     btn.style.backgroundColor = "#ce1818"
                   }
+                  btn.setAttribute("disabled", true);
                 });
               } else {
                 buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
                 Array.from(divQuestions.children).forEach(btn => {
-                  if (btn !== buttonAnswers && btn.textContent === element.correct) {
-                    btn.style.backgroundColor = "#0aaf0a"; //verde claro
+                  if (btn.textContent === element.correct) {
+                    btn.style.backgroundColor = "#0aaf0a"; //verde oscuro
                   } else if (btn !== buttonAnswers) {
                     btn.style.backgroundColor = "#ce1818"; //rojo claro
                   }
+                  btn.setAttribute("disabled", true);
                 });
               }
+              setTimeout(() => {
+                if (currentQuestion < value.length - 1) {
+                  currentQuestion++
+                  articles[currentQuestion].style.display = "block";
+                  articles[currentQuestion - 1].style.display = "none";
+                }
+              }, 2000);
             });
+
           });
         }
       });
     }
   }
 }
-
-
-
-
-
-
