@@ -95,10 +95,10 @@ article {
     3px -3px 0 #db5b29,
     -3px 3px 0 #db7929,
     3px 3px 0 #dba329,
-    4px 4px 0 #222,
     5px 5px 0 #222,
     6px 6px 0 #222,
-    7px 7px 0 #222;
+    7px 7px 0 #222,
+    8px 8px 0 #222;
 }
 
 article header {
@@ -125,6 +125,7 @@ article button {
   border: none;
   background-color: #ffb070ea;
   color: #000;
+  box-shadow: 9px 9px 16px -1px #545454;
 }
 
 article button:hover {
@@ -157,6 +158,8 @@ figure img {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 9px 9px 16px -1px #545454;
 }
 
 /**********************/
