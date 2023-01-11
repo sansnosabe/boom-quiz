@@ -92,7 +92,7 @@ function createElementsFromArray(jsonArray) {
                   articles[currentQuestion].style.display = "block";
                   articles[currentQuestion - 1].style.display = "none";
                 }
-              }, 2000);
+              }, 500);
             });
 
           });
