@@ -32,7 +32,7 @@
 body {
   height: 100vh;
   font-family: 'Roboto', sans-serif;
-  background-image: url(/img/banner/banner2.jpg);
+  background-image: url(/img/banner/banner.jpg);
   display: grid;
   /*Firefox*/
   grid-template-columns: 100%;
