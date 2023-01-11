@@ -8,3 +8,7 @@ Tareas pendientes:
     - Poner en cada pregunta los puntos que ha sumado.
     - Poner la suma total de los puntos al final.
     - Almacenar en el localstorage los puntos. ???
+
+  - Otras tareas posibles:
+    - Poner el juego en dos idiomas (en/es)
+    - Mostrar un card por pregunta
