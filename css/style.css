@@ -65,7 +65,7 @@ footer {
 /**********************/
 
 header {
-  grid-area: "header";
+  grid-area: header;
   flex-direction: column;
   padding: 1rem;
 }
@@ -73,7 +73,6 @@ header {
 header img {
   width: 9rem;
   margin-left: 30px;
-  aspect-ratio: square;
 }
 
 header h1 {
@@ -86,7 +85,7 @@ header h1 {
 /******* MAIN *******/
 /********************/
 main {
-  grid-area: "main";
+  grid-area: main;
   padding-bottom: 2rem;
 }
 
@@ -172,7 +171,7 @@ figure img {
 /******* FOOTER *******/
 /**********************/
 footer {
-  grid-area: "footer";
+  grid-area: footer;
   font-weight: 600;
   background-color: #f16615;
 }
