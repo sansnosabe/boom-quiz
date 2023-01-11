@@ -24,9 +24,8 @@ function createElementsFromArray(jsonArray) {
     const value = jsonArray.map((entries, i) => {
       const question = entries.question
       const answers = entries.answers
-      const correct = entries.correct
       const indexQuestions = i
-      return { question, answers, correct, indexQuestions }
+      return { question, answers, indexQuestions }
     });
 
     const section = document.querySelector("section")
@@ -60,24 +59,9 @@ function createElementsFromArray(jsonArray) {
             const buttonAnswers = document.createElement('button')
             buttonAnswers.textContent = answer
             divQuestions.appendChild(buttonAnswers)
-
-            buttonAnswers.addEventListener("click", () => {
-              if (answer === element.correct) {
-                buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
-              } else {
-                buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
-                Array.from(divQuestions.children).forEach(btn => {
-                  if (btn !== buttonAnswers && btn.textContent === element.correct) {
-                    btn.style.backgroundColor = "#068b06"; //verde claro
-                  } else if (btn !== buttonAnswers) {
-                    btn.style.backgroundColor = "#ce1818"; //rojo claro
-                  }
-                });
-              }
-            });
-          });
+          })
         }
-      });
+      })
     }
   }
 }

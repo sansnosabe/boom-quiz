@@ -24,9 +24,8 @@ function createElementsFromArray(jsonArray) {
     const value = jsonArray.map((entries, i) => {
       const question = entries.question
       const answers = entries.answers
-      const correct = entries.correct
       const indexQuestions = i
-      return { question, answers, correct, indexQuestions }
+      return { question, answers, indexQuestions }
     });
 
     const section = document.querySelector("section")
@@ -36,48 +35,38 @@ function createElementsFromArray(jsonArray) {
 
         if (element.indexQuestions === index) {
           const article = document.createElement('article')
-          const header = document.createElement('header')
-          const main = document.createElement('main')
-          const questionTitleH2 = document.createElement('h2')
-          const divQuestions = document.createElement('div')
-          const figure = document.createElement('figure')
-          const indexImage = index.toString().padStart(2, '0');
-          const image = document.createElement('img')
-
           section.appendChild(article)
-          article.appendChild(header)
-          article.appendChild(main)
-          header.appendChild(questionTitleH2)
-          main.appendChild(divQuestions).classList.add("questions")
-          main.appendChild(figure)
-          figure.appendChild(image)
 
+          const header = document.createElement('header')
+          article.appendChild(header)
+
+          const main = document.createElement('main')
+          article.appendChild(main)
+
+          const questionTitleH2 = document.createElement('h2')
+          header.appendChild(questionTitleH2)
           questionTitleH2.textContent = `${index + 1}. ${element.question}`
+
+          const divQuestions = document.createElement('div')
+          main.appendChild(divQuestions).classList.add("questions")
+
+          const figure = document.createElement('figure')
+          main.appendChild(figure)
+
+          const indexImage = index.toString().padStart(2, '0');
+
+          const image = document.createElement('img')
           image.src = `img/questions-images/question-${indexImage}.png`;
           image.alt = "caratula de pelicula";
+          figure.appendChild(image)
 
           element.answers.forEach(answer => {
             const buttonAnswers = document.createElement('button')
             buttonAnswers.textContent = answer
             divQuestions.appendChild(buttonAnswers)
-
-            buttonAnswers.addEventListener("click", () => {
-              if (answer === element.correct) {
-                buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
-              } else {
-                buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
-                Array.from(divQuestions.children).forEach(btn => {
-                  if (btn !== buttonAnswers && btn.textContent === element.correct) {
-                    btn.style.backgroundColor = "#068b06"; //verde claro
-                  } else if (btn !== buttonAnswers) {
-                    btn.style.backgroundColor = "#ce1818"; //rojo claro
-                  }
-                });
-              }
-            });
-          });
+          })
         }
-      });
+      })
     }
   }
 }
