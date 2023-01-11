@@ -186,7 +186,7 @@ footer {
   }
 }
 
-@media (min-width: 695px) {
+@media (min-width: 775px) {
   header {
     flex-direction: row;
   }
@@ -200,8 +200,12 @@ footer {
     margin-top: 30px;
   }
 
+  section {
+    gap: 4rem;
+  }
+
   article {
-    max-width: 800px;
+    max-width: 900px;
   }
 
   article main {
@@ -215,5 +219,9 @@ footer {
 
   article main figure {
     width: 25rem;
+  }
+
+  .questions {
+    padding: 2rem 2rem;
   }
 }
