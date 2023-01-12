@@ -47,21 +47,17 @@ function createElementsFromArray(jsonArray) {
           const figure = document.createElement('figure');
           const indexImage = index.toString().padStart(2, '0');
           const image = document.createElement('img');
-          const scoreContainer = document.createElement('div');
-          const textScore = document.createElement('h2');
-          const imgScore = document.createElement('img');
+          const textScore = document.createElement('h3');
 
           articles.push(article);
 
-          textScore.textContent = '0/50';
+          textScore.textContent = 'Score 0/50';
 
           section.appendChild(article)
           article.appendChild(header)
           article.appendChild(main)
           header.appendChild(questionTitleH2)
-          header.appendChild(scoreContainer).classList.add("scoreContainer")
-          scoreContainer.appendChild(textScore).classList.add("textScore")
-          scoreContainer.appendChild(imgScore).classList.add("imgScore")
+          header.appendChild(textScore).classList.add("textScore")
           main.appendChild(divQuestions).classList.add("questions")
           main.appendChild(figure)
           figure.appendChild(image)
@@ -71,9 +67,6 @@ function createElementsFromArray(jsonArray) {
           image.src = `img/questions-images/question-${indexImage}.png`;
           image.alt = "caratula de pelicula";
 
-          imgScore.src = "img/bomb.svg";
-          imgScore.alt = "bomba puntuación";
-
           element.answers.forEach(answer => {
             const buttonAnswers = document.createElement('button')
             buttonAnswers.textContent = answer
@@ -82,7 +75,6 @@ function createElementsFromArray(jsonArray) {
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
                 score++;
-                textScore.textContent = `${score}/50`;
                 buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
                 Array.from(divQuestions.children).forEach(btn => {
                   if (btn !== buttonAnswers) {
@@ -101,6 +93,7 @@ function createElementsFromArray(jsonArray) {
                   btn.setAttribute("disabled", true);
                 });
               }
+              textScore.textContent = `Score ${score}/50`;
               setTimeout(() => {
                 if (currentQuestion < value.length - 1) {
                   currentQuestion++
