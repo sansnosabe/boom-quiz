@@ -7,7 +7,8 @@ span {
   white-space: nowrap;
   border-right: 4px solid;
   width: 65ch;
-
+  background-color: red;
+  z-index: 1000000;
   animation: typing 4s steps(65), blink .5s infinite step-end alternate;
   overflow: hidden;
 }
@@ -30,7 +31,7 @@ span {
   height: 7px;
   top: 50px;
   left: 25px;
-  background-image: url(/REP-DeliveriesHAB/quiz-game/img/animationBoom/cuerda.png);
+  background-image: url(img/animationBoom/cuerda.png);
   background-size: auto 100%;
   animation: drop 30s linear;
   animation-fill-mode: forwards;
@@ -165,7 +166,7 @@ span {
   width: 1800px;
   height: 1201px;
   margin: auto;
-  background: url(/REP-DeliveriesHAB/quiz-game/img/animationBoom/spark.png)repeat-x;
+  background: url(img/animationBoom/spark.png)repeat-x;
   background-position: 0;
   animation: spark 0.3s steps(3) infinite, drop2 29s linear;
   left: 8200px;
