@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="/img/bomb.svg">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/timer-animation.css">
   <title>QUIZ GAME | BOMM</title>
 </head>
 
@@ -17,8 +18,18 @@
     <h1>Bomm!</h1>
   </header>
   <main>
-    <h3 class="score"></h3>
     <section>
+      <div id="bomba">
+        <img src="/REP-DeliveriesHAB/quiz-game/img/animationBoom/bomba_contador.png" alt="">
+        <div id="line"></div>
+      </div>
+      <div id="explosionBomba">
+        <img src="/REP-DeliveriesHAB/quiz-game/img/animationBoom/bomba_boom.png" alt="">
+      </div>
+
+      <div id="cs">
+        <div id="sprite"></div>
+      </div>
       <!-- <article>
         <header>
           <h2>Titulo</h2>
@@ -39,7 +50,7 @@
   </main>
 
   <footer>
-    ¡El mejor juego del mundo! (versión cutre de Boom!) - &copy; 2023 Hack a Boss
+    ¡El mejor juego del mundo! - &copy; 2023 Hack a Boss
   </footer>
 
   <script src="js/script.js"></script>

@@ -19,12 +19,11 @@ async function main() {
 main()
 
 
-
 // Se encarga de crear los elementos del DOM a partir del array de datos.
 function createElementsFromArray(jsonArray) {
   let currentQuestion = 0;
   let articles = []
-  let score = 00;
+  let score = 0;
   if (jsonArray) {
     const value = jsonArray.map((entries, i) => {
       const question = entries.question
@@ -48,16 +47,21 @@ function createElementsFromArray(jsonArray) {
           const figure = document.createElement('figure');
           const indexImage = index.toString().padStart(2, '0');
           const image = document.createElement('img');
+          const scoreContainer = document.createElement('div');
+          const textScore = document.createElement('h2');
+          const imgScore = document.createElement('img');
+
           articles.push(article);
 
-          const textScore = document.querySelector('h3.score');
-          textScore.textContent = `Score: 00`;
-
+          textScore.textContent = '0/50';
 
           section.appendChild(article)
           article.appendChild(header)
           article.appendChild(main)
           header.appendChild(questionTitleH2)
+          header.appendChild(scoreContainer).classList.add("scoreContainer")
+          scoreContainer.appendChild(textScore).classList.add("textScore")
+          scoreContainer.appendChild(imgScore).classList.add("imgScore")
           main.appendChild(divQuestions).classList.add("questions")
           main.appendChild(figure)
           figure.appendChild(image)
@@ -67,6 +71,9 @@ function createElementsFromArray(jsonArray) {
           image.src = `img/questions-images/question-${indexImage}.png`;
           image.alt = "caratula de pelicula";
 
+          imgScore.src = "img/bomb.svg";
+          imgScore.alt = "bomba puntuación";
+
           element.answers.forEach(answer => {
             const buttonAnswers = document.createElement('button')
             buttonAnswers.textContent = answer
@@ -75,7 +82,7 @@ function createElementsFromArray(jsonArray) {
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
                 score++;
-                textScore.textContent = `Score: ${score.toString().padStart(2, "0")}`;
+                textScore.textContent = `${score}/50`;
                 buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
                 Array.from(divQuestions.children).forEach(btn => {
                   if (btn !== buttonAnswers) {
@@ -108,5 +115,26 @@ function createElementsFromArray(jsonArray) {
       });
     }
   }
-
 }
+
+function startCounter() {
+  let seconds = 30;
+  const p = document.createElement("p");
+  const divC = document.querySelector("#contador");
+
+  divC.appendChild(p);
+
+
+  const intervalId = setInterval(() => {
+    if (seconds === 0) {
+      clearInterval(intervalId);
+      console.log("Time's up!");
+    } else {
+      console.log(seconds);
+      seconds--;
+      p.innerHTML = seconds;
+    }
+  }, 1000);
+}
+
+startCounter();

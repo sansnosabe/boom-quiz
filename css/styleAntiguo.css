@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+80s+Fade&display=swap');
 
+
 /***********************/
 /******* GENERAL *******/
 /***********************/
 :root {
-  --button-color: #ffc244;
+  --button-color: rgb(255, 192, 66);
   --text-color: #191718;
   --border-radius: 20px;
   --title-shadow:
@@ -16,6 +17,15 @@
     6px 6px 0 var(--text-color),
     7px 7px 0 var(--text-color),
     8px 8px 0 var(--text-color);
+  --box-shadow:
+    -6px -6px 0#db2929,
+    6px -6px 0 #db5b29,
+    -6px 6px 0 #db7929,
+    6px 6px 0 #dba329,
+    8px 8px 0 var(--text-color),
+    9px 9px 0 var(--text-color),
+    10px 10px 0 var(--text-color),
+    11px 11px 0 var(--text-color);
 }
 
 * {
@@ -28,7 +38,6 @@ body {
   height: 100vh;
   font-family: 'Roboto', sans-serif;
   background-image: url(/img/banner/banner.jpg);
-  background-size: cover;
   color: var(--text-color);
   display: grid;
   grid-template-columns: 100%;
@@ -55,7 +64,6 @@ header {
   grid-area: header;
   flex-direction: column;
   padding: 1rem;
-  /* background-image: url(/img/banner/banner3.jpg); */
 }
 
 header img {
@@ -65,7 +73,7 @@ header img {
 
 header h1 {
   font-size: 4.5rem;
-  /* font-family: 'Rubik 80s Fade'; */
+  font-family: 'Rubik 80s Fade';
   text-shadow: var(--title-shadow);
 }
 
@@ -77,53 +85,39 @@ main {
   padding-bottom: 2rem;
 }
 
+
 section {
   display: grid;
   gap: 2rem;
   padding: 2rem;
 }
 
-/***** article "questions cards" *****/
+/* article "questions cards" */
 article {
   display: grid;
   gap: 0.5rem;
+  background-color: #ffffff9d;
   border-radius: var(--border-radius);
-  background-color: #0e4ed87a;
+  box-shadow: var(--box-shadow);
+  /* -6px -6px 0#db2929,
+    6px -6px 0 #db5b29,
+    -6px 6px 0 #db7929,
+    6px 6px 0 #dba329,
+    8px 8px 0 var(--text-color),
+    9px 9px 0 var(--text-color),
+    10px 10px 0 var(--text-color),
+    11px 11px 0 var(--text-color); */
+  overflow: hidden;
 }
 
 article header {
-  display: grid;
-  grid-template-columns: 1fr 100px;
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-  background-color: #0066ff;
+  background-color: #309c42ce;
 }
 
 article header h2 {
-  grid-column: 1 / 2;
   text-align: center;
   font-size: 1.3em;
   padding: 1rem;
-}
-
-.scoreContainer {
-  grid-column: 2 / 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.textScore {
-  position: absolute;
-  color: white;
-  margin-top: 15px;
-
-}
-
-.imgScore {
-  width: 8rem;
-  padding-right: 1rem;
 }
 
 article main {
@@ -140,11 +134,11 @@ article main {
 
 article .questions button {
   padding: 1.3rem 1rem;
-  font-weight: 800;
-  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
   border: none;
   border-radius: var(--border-radius);
-  background-color: #5498ff;
+  background-color: var(--button-color);
   box-shadow: 9px 9px 16px -1px #545454;
 }
 
@@ -175,6 +169,7 @@ figure img {
 footer {
   grid-area: footer;
   font-weight: 600;
+  /* background-color: #f16615; */
 }
 
 
@@ -217,17 +212,9 @@ footer {
     margin-top: 30px;
   }
 
+
   section {
     gap: 4rem;
-  }
-
-  .textScore {
-    margin-top: 25px;
-  }
-
-
-  .imgScore {
-    width: 12rem;
   }
 
   article {
@@ -240,7 +227,7 @@ footer {
   }
 
   article header h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .questions {
@@ -249,8 +236,5 @@ footer {
 
   .questions button {
     min-width: 250px;
-    font-size: 1.3rem;
-
   }
-
 }
