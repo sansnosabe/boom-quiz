@@ -14,98 +14,101 @@ async function fetchJSON() {
 //Estas funciones son llamadas en un orden específico para asegurar que se obtengan los datos desde la URL y se creen los elementos en el DOM en el orden correcto.
 async function main() {
   const jsonArray = await fetchJSON();
-  createElementsFromArray(jsonArray)
+  createDOM(jsonArray)
 }
 main()
 
 
-// Se encarga de crear los elementos del DOM a partir del array de datos.
-function createElementsFromArray(jsonArray) {
-  let currentQuestion = 0;
-  let articles = []
-  let score = 0;
+let score = 0;
+let currentQuestion = 0;
+
+function createDOM(jsonArray) {
+  let articles = [];
   if (jsonArray) {
     const value = jsonArray.map((entries, i) => {
-      const question = entries.question
-      const answers = entries.answers
-      const correct = entries.correct
-      const indexQuestions = i
-      return { question, answers, correct, indexQuestions }
+      const question = entries.question;
+      const answers = entries.answers;
+      const correct = entries.correct;
+      const indexQuestions = i;
+      return { question, answers, correct, indexQuestions };
     });
 
-    const section = document.querySelector("section")
+    const section = document.querySelector("section");
     if (section) {
       value.forEach(element => {
-        const index = Object.keys(jsonArray).findIndex(key => jsonArray[key].question === element.question)
+        const index = Object.keys(jsonArray).findIndex(
+          key => jsonArray[key].question === element.question
+        );
 
         if (element.indexQuestions === index) {
-          const article = document.createElement('article');
-          const header = document.createElement('header');
-          const main = document.createElement('main');
-          const questionTitleH2 = document.createElement('h2');
-          const divQuestions = document.createElement('div');
-          const figure = document.createElement('figure');
-          const indexImage = index.toString().padStart(2, '0');
-          const image = document.createElement('img');
-          const textScore = document.createElement('h3');
+          const article = document.createElement("article");
+          const header = document.createElement("header");
+          const main = document.createElement("main");
+          const questionTitleH2 = document.createElement("h2");
+          const divQuestions = document.createElement("div");
+          const figure = document.createElement("figure");
+          const indexImage = index.toString().padStart(2, "0");
+          const image = document.createElement("img");
+          const textScore = document.createElement("h3");
 
           articles.push(article);
 
-          textScore.textContent = 'Score 0/50';
+          textScore.textContent = `Score ${score}/50`;
 
-          section.appendChild(article)
-          article.appendChild(header)
-          article.appendChild(main)
-          header.appendChild(questionTitleH2)
-          header.appendChild(textScore).classList.add("textScore")
-          main.appendChild(divQuestions).classList.add("questions")
-          main.appendChild(figure)
-          figure.appendChild(image)
+          section.appendChild(article);
+          article.appendChild(header);
+          article.appendChild(main);
+          header.appendChild(questionTitleH2);
 
-          article.style.display = (index === currentQuestion) ? "block" : "none"
-          questionTitleH2.textContent = `${index + 1}. ${element.question}`
+          header.appendChild(textScore).classList.add("textScore");
+          main.appendChild(divQuestions).classList.add("questions");
+          main.appendChild(figure);
+          figure.appendChild(image);
+
+          article.style.display = index === currentQuestion ? "block" : "none";
+          questionTitleH2.textContent = `${index + 1}. ${element.question}`;
           image.src = `img/questions-images/question-${indexImage}.png`;
           image.alt = "caratula de pelicula";
 
           element.answers.forEach(answer => {
-            const buttonAnswers = document.createElement('button')
-            buttonAnswers.textContent = answer
-            divQuestions.appendChild(buttonAnswers)
+            const buttonAnswers = document.createElement("button");
+            buttonAnswers.textContent = answer;
+            divQuestions.appendChild(buttonAnswers);
 
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
                 score++;
                 buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
-                Array.from(divQuestions.children).forEach(btn => {
-                  if (btn !== buttonAnswers) {
-                    btn.style.backgroundColor = "#ce1818"
-                  } //rojo claro
-                  btn.setAttribute("disabled", true);
-                });
               } else {
                 buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
-                Array.from(divQuestions.children).forEach(btn => {
-                  if (btn.textContent === element.correct) {
-                    btn.style.backgroundColor = "#0aaf0a"; //verde oscuro
-                  } else if (btn !== buttonAnswers) {
-                    btn.style.backgroundColor = "#ce1818"; //rojo claro
-                  }
-                  btn.setAttribute("disabled", true);
-                });
               }
               textScore.textContent = `Score ${score}/50`;
-              setTimeout(() => {
-                if (currentQuestion < value.length - 1) {
-                  currentQuestion++
-                  articles[currentQuestion].style.display = "block";
-                  articles[currentQuestion - 1].style.display = "none";
+              Array.from(divQuestions.children).forEach(btn => {
+                if (btn.textContent === element.correct) {
+                  btn.style.backgroundColor = "#0aaf0a"; //verde oscuro
+                } else if (btn !== buttonAnswers) {
+                  btn.style.backgroundColor = "#ce1818"; //rojo claro
                 }
+                btn.setAttribute("disabled", true);
+              });
+
+              setTimeout(() => {
+                changeQuestion(articles);
               }, 500);
             });
-
           });
         }
       });
     }
+  }
+}
+
+
+
+function changeQuestion(articles) {
+  if (currentQuestion < articles.length - 1) {
+    currentQuestion++;
+    articles[currentQuestion].style.display = "block";
+    articles[currentQuestion - 1].style.display = "none";
   }
 }
