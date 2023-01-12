@@ -116,25 +116,3 @@ function createElementsFromArray(jsonArray) {
     }
   }
 }
-
-function startCounter() {
-  let seconds = 30;
-  const p = document.createElement("p");
-  const divC = document.querySelector("#contador");
-
-  divC.appendChild(p);
-
-
-  const intervalId = setInterval(() => {
-    if (seconds === 0) {
-      clearInterval(intervalId);
-      console.log("Time's up!");
-    } else {
-      console.log(seconds);
-      seconds--;
-      p.innerHTML = seconds;
-    }
-  }, 1000);
-}
-
-startCounter();
