@@ -18,11 +18,13 @@ async function main() {
 }
 main()
 
+
+
 // Se encarga de crear los elementos del DOM a partir del array de datos.
 function createElementsFromArray(jsonArray) {
   let currentQuestion = 0;
   let articles = []
-
+  let score = 00;
   if (jsonArray) {
     const value = jsonArray.map((entries, i) => {
       const question = entries.question
@@ -38,15 +40,19 @@ function createElementsFromArray(jsonArray) {
         const index = Object.keys(jsonArray).findIndex(key => jsonArray[key].question === element.question)
 
         if (element.indexQuestions === index) {
-          const article = document.createElement('article')
-          const header = document.createElement('header')
-          const main = document.createElement('main')
-          const questionTitleH2 = document.createElement('h2')
-          const divQuestions = document.createElement('div')
-          const figure = document.createElement('figure')
+          const article = document.createElement('article');
+          const header = document.createElement('header');
+          const main = document.createElement('main');
+          const questionTitleH2 = document.createElement('h2');
+          const divQuestions = document.createElement('div');
+          const figure = document.createElement('figure');
           const indexImage = index.toString().padStart(2, '0');
-          const image = document.createElement('img')
+          const image = document.createElement('img');
           articles.push(article);
+
+          const textScore = document.querySelector('h3.score');
+          textScore.textContent = `Score: 00`;
+
 
           section.appendChild(article)
           article.appendChild(header)
@@ -68,11 +74,13 @@ function createElementsFromArray(jsonArray) {
 
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
+                score++;
+                textScore.textContent = `Score: ${score.toString().padStart(2, "0")}`;
                 buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
                 Array.from(divQuestions.children).forEach(btn => {
                   if (btn !== buttonAnswers) {
                     btn.style.backgroundColor = "#ce1818"
-                  }
+                  } //rojo claro
                   btn.setAttribute("disabled", true);
                 });
               } else {
@@ -100,4 +108,5 @@ function createElementsFromArray(jsonArray) {
       });
     }
   }
+
 }
