@@ -103,8 +103,6 @@ function createDOM(jsonArray) {
   }
 }
 
-
-
 function changeQuestion(articles) {
   if (currentQuestion < articles.length - 1) {
     currentQuestion++;
