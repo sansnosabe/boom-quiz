@@ -85,7 +85,7 @@ main {
   display: grid;
 }
 
-/* span {
+span {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -93,28 +93,19 @@ main {
   margin-bottom: 0;
 }
 
-#timer {
-  width: 100%;
-  height: 1.5rem;
-  margin: 0 1rem;
-  background-image: url(/img/cuerda.png);
-  background-size: auto 100%;
-  animation: drop 15s linear;
-  animation-fill-mode: forwards;
-  z-index: 1;
-}
-
-@keyframes drop {
-  to {
-    width: 0px;
-  }
-} */
-
 section {
+  position: relative;
   width: auto;
   display: grid;
   margin: 2rem;
-  border: #ffffff10 solid;
+}
+
+.finalScore {
+  text-align: center;
+  background-color: #ffa440;
+  border: 4px solid #474546;
+  padding: 3rem;
+  font-size: 2rem;
 }
 
 /***** article "questions cards" *****/
@@ -123,25 +114,31 @@ section article header {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: right;
+  text-align: center;
   font-size: 1.2rem;
   padding: 2rem;
+  padding-left: 6.5rem;
   gap: 1rem;
   border: none;
   background-color: #ffa440;
-
 }
 
 .textScore {
-  width: 5rem;
-  height: 5rem;
-  padding: 1rem;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 1000px;
-  rotate: 10deg;
+  font-size: 1.4rem;
+  border-radius: 100px;
+  width: 90px;
+  height: 90px;
+  margin-top: 0.5em;
+  margin-left: calc(1em - 10px);
+  rotate: -15deg;
   background-color: #22b8ee;
+  box-shadow: -3px 2px 5px 0px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -153,8 +150,15 @@ section article header {
   margin-left: 5px;
   border-radius: 100px;
   background-color: #ffa440;
-  rotate: 10deg;
-  box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  rotate: -15deg;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.textScore::after {
+  content: url(/img/pushpin.svg);
+  position: absolute;
+  margin-bottom: 100px;
+  margin-left: 51px;
 }
 
 section article main {
@@ -162,7 +166,6 @@ section article main {
   min-height: 300px;
   display: grid;
   background: #474546;
-  /* d3d3d3 */
 }
 
 section article main .questions {
@@ -208,7 +211,6 @@ footer {
   font-weight: 600;
   color: #222;
   background: linear-gradient(90deg, yellow 10%, red 90%);
-  ;
 }
 
 /*********************/
@@ -217,11 +219,6 @@ footer {
 @media (min-width: 600px) {
   article {
     max-width: 900px;
-  }
-
-  .textScore {
-    padding: 1rem;
-    background-color: #22b8ee;
   }
 
   article main {
@@ -248,6 +245,7 @@ footer {
 }
 
 @media (min-width: 1024px) {
+
   header img {
     width: 20rem;
   }
@@ -258,17 +256,6 @@ footer {
 
   section article header h2 {
     font-size: 2rem;
-  }
-
-  .textScore {
-    font-size: 2rem;
-    padding: 4rem;
-  }
-
-  .textScore::before {
-    width: 0.3rem;
-    height: 0.3rem;
-    margin-bottom: 90px;
   }
 
   section article main .questions {

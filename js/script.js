@@ -2,8 +2,6 @@ const URL = 'https://gist.githubusercontent.com/bertez/2528edb2ab7857dae29c39d1f
 let score = 0;
 let scoreLocal = 0;
 let currentQuestion = 0;
-let textScoreValue;
-
 
 async function fetchJSON(URL) {
   try {
@@ -37,6 +35,8 @@ function createDOM(jsonArray) {
         );
 
         if (element.indexQuestions === index) {
+
+
           const article = document.createElement("article");
           const header = document.createElement("header");
           const main = document.createElement("main");
@@ -45,19 +45,17 @@ function createDOM(jsonArray) {
           const figure = document.createElement("figure");
           const indexImage = index.toString().padStart(2, "0");
           const image = document.createElement("img");
-          // const textScore = document.createElement("h3");
 
           articles.push(article);
+          console.log(articles);
 
           const textScore = document.querySelector(".textScore")
-          textScore.textContent = `Score ${scoreLocal}/50`;
+          textScore.textContent = `Score ${scoreLocal}/${articles.length}`;
 
           section.appendChild(article);
           article.appendChild(header);
           article.appendChild(main);
           header.appendChild(questionTitleH2);
-
-          // header.appendChild(textScore).classList.add("textScore");
           main.appendChild(divQuestions).classList.add("questions");
           main.appendChild(figure);
           figure.appendChild(image);
@@ -73,16 +71,13 @@ function createDOM(jsonArray) {
             divQuestions.appendChild(buttonAnswers);
 
 
-
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
-                score++;
-                pruebalocalStorage(score)
-                textScore.textContent = `Score ${scoreLocal}/50`
-
+                updateScore()
+                textScore.textContent = `Score ${scoreLocal}/${articles.length}`
                 buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
               } else {
-                textScore.textContent = `Score ${scoreLocal}/50`
+                textScore.textContent = `Score ${scoreLocal}/${articles.length}`
                 buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
               }
               Array.from(divQuestions.children).forEach(btn => {
@@ -95,7 +90,7 @@ function createDOM(jsonArray) {
               });
 
               setTimeout(() => {
-                changeQuestion(articles);
+                changeQuestion(articles, section);
               }, 500);
             });
 
@@ -110,15 +105,27 @@ function createDOM(jsonArray) {
   }
 }
 
-function changeQuestion(articles) {
+function changeQuestion(articles, section) {
   if (currentQuestion < articles.length - 1) {
     currentQuestion++;
+    console.log("currentQuestion" + currentQuestion);
     articles[currentQuestion].style.display = "block";
     articles[currentQuestion - 1].style.display = "none";
+  } else if (currentQuestion === articles.length - 1) {
+    articles[currentQuestion].style.display = "none";
+    const h3score = document.querySelector(".textScore")
+    h3score.style.display = "none";
+    const resultScreen = document.createElement("div");
+    resultScreen.innerHTML = `<h1>Tu puntación es: ${scoreLocal}</h1>`;
+    section.appendChild(resultScreen).classList.add("finalScore");
+    articles.forEach((article) => {
+      article.style.display = "none";
+    });
   }
 }
 
-function pruebalocalStorage(score) {
-  localStorage.setItem("score", score);
-  scoreLocal = Number(localStorage.getItem("score", score));
+function updateScore() {
+  scoreLocal++;
+  localStorage.setItem("score", scoreLocal);
 }
+
