@@ -8,6 +8,7 @@
   --secondary-color: #fff;
   --tertiary-color: #558cde;
   --border-radius: 20px;
+  --linear-gradient: linear-gradient(to left, red, yellow) 1;
   --filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
   --title-shadow:
     -3px -3px 0 #db2929,
@@ -55,13 +56,13 @@ header {
   grid-area: header;
   padding: 3rem;
   border-bottom: 1rem solid transparent;
+  border-top: 1rem solid transparent;
   border-image: linear-gradient(to left, red, yellow) 1;
 }
 
 header img {
   width: 14rem;
   position: absolute;
-  border-image: 20px;
   padding-left: 1.2rem;
   filter: var(--filter-shadow);
 }
@@ -84,14 +85,7 @@ main {
   display: grid;
 }
 
-section {
-  width: auto;
-  display: grid;
-  margin: 2rem;
-  background-color: #d3d3d3;
-}
-
-span {
+/* span {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -99,7 +93,7 @@ span {
   margin-bottom: 0;
 }
 
-#line {
+#timer {
   width: 100%;
   height: 1.5rem;
   margin: 0 1rem;
@@ -114,10 +108,16 @@ span {
   to {
     width: 0px;
   }
+} */
+
+section {
+  width: auto;
+  display: grid;
+  margin: 2rem;
+  background-color: #d3d3d3;
 }
 
 /***** article "questions cards" *****/
-
 section article header {
   min-height: 100px;
   display: flex;
@@ -128,6 +128,8 @@ section article header {
   gap: 1rem;
   border-bottom: none;
   background-color: #397ce0d0;
+  border-bottom: 0 solid transparent;
+  border-top: 0 solid transparent;
 }
 
 .textScore {
@@ -140,6 +142,20 @@ section article header {
   text-align: center;
   border-radius: 1000px;
   background-color: #db5b29;
+  rotate: 10deg;
+  box-shadow: 2px 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.textScore::before {
+  content: "";
+  position: absolute;
+  padding: 5px;
+  margin-bottom: 60px;
+  margin-left: 5px;
+  border-radius: 100px;
+  background-color: #397ce0d0;
+  rotate: 10deg;
+  box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 section article main {
@@ -152,18 +168,6 @@ section article main .questions {
   display: grid;
   gap: 1rem;
   padding: 1rem;
-}
-
-section article main figure {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-section article main figure img {
-  width: 100%;
-  height: 100%;
-  padding: 0 1rem 1rem 1rem;
 }
 
 section article button {
@@ -183,6 +187,18 @@ article button:hover {
   transition: 200ms;
 }
 
+section article main figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section article main figure img {
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem 1rem 1rem;
+}
+
 /**********************/
 /******* FOOTER *******/
 /**********************/
@@ -193,9 +209,6 @@ footer {
   background: linear-gradient(90deg, yellow 10%, red 90%);
   ;
 }
-
-
-
 
 /*********************/
 /******* MEDIA *******/
@@ -233,7 +246,6 @@ footer {
   }
 }
 
-
 @media (min-width: 1024px) {
   header img {
     width: 20rem;
@@ -243,24 +255,28 @@ footer {
     font-size: 9rem;
   }
 
+  section article header h2 {
+    font-size: 2rem;
+  }
+
   .textScore {
     font-size: 2rem;
     padding: 4rem;
   }
 
-  section article header h2 {
-    font-size: 2rem;
-  }
-
-  section article button {
-    min-width: 400px;
-    font-size: 1.4rem;
+  .textScore::before {
+    margin-bottom: 90px;
   }
 
   section article main .questions {
     padding-left: 4rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  section article button {
+    min-width: 400px;
+    font-size: 1.4rem;
   }
 
   section article main figure img {

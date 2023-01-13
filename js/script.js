@@ -18,8 +18,8 @@ async function main() {
 }
 main()
 
-
 let score = 0;
+let scoreLocal = 0;
 let currentQuestion = 0;
 
 function createDOM(jsonArray) {
@@ -53,7 +53,7 @@ function createDOM(jsonArray) {
 
           articles.push(article);
 
-          textScore.textContent = `Score ${score}/50`;
+          textScore.textContent = `Score ${scoreLocal}/50`;
 
           section.appendChild(article);
           article.appendChild(header);
@@ -77,12 +77,12 @@ function createDOM(jsonArray) {
 
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
-                score++;
+                score++ + 1;
+                pruebalocalStorage(score)
                 buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
               } else {
                 buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
               }
-              textScore.textContent = `Score ${score}/50`;
               Array.from(divQuestions.children).forEach(btn => {
                 if (btn.textContent === element.correct) {
                   btn.style.backgroundColor = "#0aaf0a"; //verde oscuro
@@ -95,7 +95,9 @@ function createDOM(jsonArray) {
               setTimeout(() => {
                 changeQuestion(articles);
               }, 500);
+              textScore.textContent = `Score ${scoreLocal}/50`
             });
+            main.addEventListener("mousemove", () => { textScore.textContent = `Score ${scoreLocal}/50`; });
           });
         }
       });
@@ -110,3 +112,9 @@ function changeQuestion(articles) {
     articles[currentQuestion - 1].style.display = "none";
   }
 }
+
+function pruebalocalStorage(score) {
+  localStorage.setItem("score", score);
+  scoreLocal = Number(localStorage.getItem("score", score));
+}
+
