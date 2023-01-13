@@ -19,9 +19,11 @@ async function main() {
 main()
 
 let score = 0;
+let scoreRended = 0;
+
 let scoreLocal = 0;
 let currentQuestion = 0;
-
+let textScoreValue;
 function createDOM(jsonArray) {
   let articles = [];
   if (jsonArray) {
@@ -53,7 +55,7 @@ function createDOM(jsonArray) {
 
           articles.push(article);
 
-          textScore.textContent = `Score ${scoreLocal}/50`;
+          textScore.textContent = `Score ${scoreRended}/50`;
 
           section.appendChild(article);
           article.appendChild(header);
@@ -77,10 +79,13 @@ function createDOM(jsonArray) {
 
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
-                score++ + 1;
+                score++;
                 pruebalocalStorage(score)
+                textScore.textContent = `Score ${scoreLocal}/50`
+
                 buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
               } else {
+                textScore.textContent = `Score ${scoreLocal}/50`
                 buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
               }
               Array.from(divQuestions.children).forEach(btn => {
@@ -95,9 +100,9 @@ function createDOM(jsonArray) {
               setTimeout(() => {
                 changeQuestion(articles);
               }, 500);
-              textScore.textContent = `Score ${scoreLocal}/50`
             });
-            main.addEventListener("mousemove", () => { textScore.textContent = `Score ${scoreLocal}/50`; });
+            // main.addEventListener("mousemove", () => { textScore.textContent = `Score ${scoreLocal}/50`; });
+
           });
         }
       });
@@ -116,5 +121,5 @@ function changeQuestion(articles) {
 function pruebalocalStorage(score) {
   localStorage.setItem("score", score);
   scoreLocal = Number(localStorage.getItem("score", score));
+  textScoreValue = Number(localStorage.getItem("score", score));
 }
-

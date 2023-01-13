@@ -4,11 +4,10 @@
 /******* GENERAL *******/
 /***********************/
 :root {
-  --principal-color: #222;
+  --principal-color: #202020;
   --secondary-color: #fff;
   --tertiary-color: #558cde;
   --border-radius: 20px;
-  --linear-gradient: linear-gradient(to left, red, yellow) 1;
   --filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
   --title-shadow:
     -3px -3px 0 #db2929,
@@ -56,19 +55,19 @@ header {
   grid-area: header;
   padding: 3rem;
   border-bottom: 1rem solid transparent;
-  border-top: 1rem solid transparent;
   border-image: linear-gradient(to left, red, yellow) 1;
 }
 
 header img {
   width: 14rem;
   position: absolute;
+  border-image: 20px;
   padding-left: 1.2rem;
   filter: var(--filter-shadow);
 }
 
 header h1 {
-  color: #000;
+  color: #202020;
   font-weight: 800;
   font-size: 5.5rem;
   padding-top: 4rem;
@@ -85,7 +84,16 @@ main {
   display: grid;
 }
 
-/* span {
+section {
+  width: auto;
+  display: grid;
+  margin: 2rem;
+  border-radius: 50px 10px 10px 10px;
+  border: #ffffff10 solid;
+  background-color: #d3d3d301;
+}
+
+span {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -93,7 +101,7 @@ main {
   margin-bottom: 0;
 }
 
-#timer {
+#line {
   width: 100%;
   height: 1.5rem;
   margin: 0 1rem;
@@ -108,16 +116,10 @@ main {
   to {
     width: 0px;
   }
-} */
-
-section {
-  width: auto;
-  display: grid;
-  margin: 2rem;
-  border: #ffffff10 solid;
 }
 
 /***** article "questions cards" *****/
+
 section article header {
   min-height: 100px;
   display: flex;
@@ -126,9 +128,9 @@ section article header {
   font-size: 1.2rem;
   padding: 2rem;
   gap: 1rem;
-  border: none;
+  border-bottom: none;
+  border-radius: 50px 10px 10px 10px;
   background-color: #ffa440;
-
 }
 
 .textScore {
@@ -140,52 +142,19 @@ section article header {
   align-items: center;
   text-align: center;
   border-radius: 1000px;
-  rotate: 10deg;
-  background-color: #22b8ee;
-
-}
-
-.textScore::before {
-  content: "";
-  position: absolute;
-  padding: 5px;
-  margin-bottom: 60px;
-  margin-left: 5px;
-  border-radius: 100px;
-  background-color: #ffa440;
-  rotate: 10deg;
-  box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: #40CCFF;
 }
 
 section article main {
   min-width: 10rem;
   min-height: 300px;
   display: grid;
-  background: #474546;
-  /* d3d3d3 */
 }
 
 section article main .questions {
   display: grid;
   gap: 1rem;
   padding: 1rem;
-}
-
-section article button {
-  min-height: 4rem;
-  min-width: 350px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 1rem;
-  border: none;
-  background-color: #22b8ee;
-  color: #fff;
-}
-
-article button:hover {
-  background-color: #ffa440;
-  cursor: pointer;
-  transition: 200ms;
 }
 
 section article main figure {
@@ -200,6 +169,24 @@ section article main figure img {
   padding: 0 1rem 1rem 1rem;
 }
 
+section article button {
+  min-height: 4rem;
+  min-width: 350px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem;
+  border: 2px #ffffff20 inset;
+  border-radius: 10px 10px 5px 5px;
+  background-color: #2c2830;
+  color: #fff;
+}
+
+article button:hover {
+  background-color: #40CCFF;
+  cursor: pointer;
+  transition: 200ms;
+}
+
 /**********************/
 /******* FOOTER *******/
 /**********************/
@@ -211,6 +198,9 @@ footer {
   ;
 }
 
+
+
+
 /*********************/
 /******* MEDIA *******/
 /*********************/
@@ -221,7 +211,7 @@ footer {
 
   .textScore {
     padding: 1rem;
-    background-color: #22b8ee;
+    background-color: #40CCFF;
   }
 
   article main {
@@ -244,8 +234,10 @@ footer {
     padding: 1rem;
     max-width: 349px;
     max-height: 349px;
+    border-radius: 40px 40px 20px 20px;
   }
 }
+
 
 @media (min-width: 1024px) {
   header img {
@@ -256,30 +248,24 @@ footer {
     font-size: 9rem;
   }
 
-  section article header h2 {
-    font-size: 2rem;
-  }
-
   .textScore {
     font-size: 2rem;
     padding: 4rem;
   }
 
-  .textScore::before {
-    width: 0.3rem;
-    height: 0.3rem;
-    margin-bottom: 90px;
+  section article header h2 {
+    font-size: 2rem;
+  }
+
+  section article button {
+    min-width: 400px;
+    font-size: 1.4rem;
   }
 
   section article main .questions {
     padding-left: 4rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
-  }
-
-  section article button {
-    min-width: 400px;
-    font-size: 1.4rem;
   }
 
   section article main figure img {

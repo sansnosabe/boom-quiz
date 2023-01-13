@@ -114,7 +114,7 @@ section {
   width: auto;
   display: grid;
   margin: 2rem;
-  border: #ffffff10 solid;
+  background-color: #d3d3d3;
 }
 
 /***** article "questions cards" *****/
@@ -127,7 +127,7 @@ section article header {
   padding: 2rem;
   gap: 1rem;
   border: none;
-  background-color: #ffa440;
+  background-color: #397ce0d0;
 
 }
 
@@ -141,7 +141,7 @@ section article header {
   text-align: center;
   border-radius: 1000px;
   rotate: 10deg;
-  background-color: #22b8ee;
+  background-color: #db5b29;
 
 }
 
@@ -152,7 +152,7 @@ section article header {
   margin-bottom: 60px;
   margin-left: 5px;
   border-radius: 100px;
-  background-color: #ffa440;
+  background-color: #397ce0d0;
   rotate: 10deg;
   box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -161,8 +161,6 @@ section article main {
   min-width: 10rem;
   min-height: 300px;
   display: grid;
-  background: #474546;
-  /* d3d3d3 */
 }
 
 section article main .questions {
@@ -178,12 +176,12 @@ section article button {
   font-weight: bold;
   padding: 1rem;
   border: none;
-  background-color: #22b8ee;
+  background-color: #558cde;
   color: #fff;
 }
 
 article button:hover {
-  background-color: #ffa440;
+  background-color: #db5b29;
   cursor: pointer;
   transition: 200ms;
 }
@@ -221,7 +219,7 @@ footer {
 
   .textScore {
     padding: 1rem;
-    background-color: #22b8ee;
+    background-color: #db5b29;
   }
 
   article main {
@@ -266,8 +264,6 @@ footer {
   }
 
   .textScore::before {
-    width: 0.3rem;
-    height: 0.3rem;
     margin-bottom: 90px;
   }
 
