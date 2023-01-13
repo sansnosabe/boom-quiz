@@ -101,7 +101,7 @@ function createDOM(jsonArray) {
                 changeQuestion(articles);
               }, 500);
             });
-            // main.addEventListener("mousemove", () => { textScore.textContent = `Score ${scoreLocal}/50`; });
+            main.addEventListener("mousemove", () => { textScore.textContent = `Score ${scoreLocal}/50`; });
 
           });
         }
