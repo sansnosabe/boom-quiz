@@ -33,23 +33,14 @@ function createDOM(jsonArray) {
         const index = Object.keys(jsonArray).findIndex(
           key => jsonArray[key].question === element.question
         );
-
         if (element.indexQuestions === index) {
-
-
-          const article = document.createElement("article");
-          const header = document.createElement("header");
-          const main = document.createElement("main");
-          const questionTitleH2 = document.createElement("h2");
-          const divQuestions = document.createElement("div");
-          const figure = document.createElement("figure");
+          const arrayElementsToCreate = ["article", "header", "main", "h2", "div", "figure", "img"]
+          const elements = arrayElementsToCreate.map(element => document.createElement(element));
+          const [article, header, main, questionTitleH2, divQuestions, figure, image] = elements;
           const indexImage = index.toString().padStart(2, "0");
-          const image = document.createElement("img");
+          const textScore = document.querySelector(".textScore")
 
           articles.push(article);
-          console.log(articles);
-
-          const textScore = document.querySelector(".textScore")
           textScore.textContent = `Score ${scoreLocal}/${articles.length}`;
 
           section.appendChild(article);
@@ -71,6 +62,7 @@ function createDOM(jsonArray) {
             divQuestions.appendChild(buttonAnswers);
 
 
+            // ****************************************************************************************
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
                 updateScore()
@@ -93,10 +85,8 @@ function createDOM(jsonArray) {
                 changeQuestion(articles, section);
               }, 500);
             });
-
-
-
-
+            // buttonAnswers.addEventListener("click", changeBackground(answer, element, textScore, buttonAnswers, articles, divQuestions))
+            // ****************************************************************************************
 
           });
         }
@@ -104,11 +94,14 @@ function createDOM(jsonArray) {
     }
   }
 }
+function updateScore() {
+  scoreLocal++;
+  localStorage.setItem("score", scoreLocal);
+}
 
 function changeQuestion(articles, section) {
   if (currentQuestion < articles.length - 1) {
     currentQuestion++;
-    console.log("currentQuestion" + currentQuestion);
     articles[currentQuestion].style.display = "block";
     articles[currentQuestion - 1].style.display = "none";
   } else if (currentQuestion === articles.length - 1) {
@@ -124,8 +117,24 @@ function changeQuestion(articles, section) {
   }
 }
 
-function updateScore() {
-  scoreLocal++;
-  localStorage.setItem("score", scoreLocal);
-}
-
+// function changeBackground(answer, element, textScore, buttonAnswers, articles, divQuestions) {
+//   if (answer === element.correct) {
+//     updateScore()
+//     textScore.textContent = `Score ${scoreLocal}/${articles.length}`
+//     buttonAnswers.style.backgroundColor = "#0aaf0a";
+//   } else {
+//     textScore.textContent = `Score ${scoreLocal}/${articles.length}`
+//     buttonAnswers.style.backgroundColor = "#880000";
+//   }
+//   Array.from(divQuestions.children).forEach(btn => {
+//     if (btn.textContent === element.correct) {
+//       btn.style.backgroundColor = "#0aaf0a";
+//     } else if (btn !== buttonAnswers) {
+//       btn.style.backgroundColor = "#ce1818";
+//     }
+//     btn.setAttribute("disabled", true);
+//   });
+//   setTimeout(() => {
+//     changeQuestion(articles, section);
+//   }, 500);
+// }
