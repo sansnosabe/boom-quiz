@@ -1,29 +1,23 @@
 const URL = 'https://gist.githubusercontent.com/bertez/2528edb2ab7857dae29c39d1fb669d31/raw/4891dde8eac038aa5719512adee4b4243a8063fd/quiz.json';
+let score = 0;
+let scoreLocal = 0;
+let currentQuestion = 0;
+let textScoreValue;
 
-// Función asincrona, hace la petición y nos devuelve los datos en formato JSON.
-async function fetchJSON() {
+
+async function fetchJSON(URL) {
   try {
     const response = await fetch(URL);
-    return await response.json();
+    const data = await response.json();
+    const jsonArray = data;
+    createDOM(jsonArray)
   } catch (error) {
     console.error(error.message);
   }
 }
+fetchJSON(URL)
 
-// Se encarga de gestionar el orden en que se ejecuta el programa llamando a fetchJSON() y createElementsFromArray(jsonArray)
-//Estas funciones son llamadas en un orden específico para asegurar que se obtengan los datos desde la URL y se creen los elementos en el DOM en el orden correcto.
-async function main() {
-  const jsonArray = await fetchJSON();
-  createDOM(jsonArray)
-}
-main()
 
-let score = 0;
-let scoreRended = 0;
-
-let scoreLocal = 0;
-let currentQuestion = 0;
-let textScoreValue;
 function createDOM(jsonArray) {
   let articles = [];
   if (jsonArray) {
@@ -51,18 +45,19 @@ function createDOM(jsonArray) {
           const figure = document.createElement("figure");
           const indexImage = index.toString().padStart(2, "0");
           const image = document.createElement("img");
-          const textScore = document.createElement("h3");
+          // const textScore = document.createElement("h3");
 
           articles.push(article);
 
-          textScore.textContent = `Score ${scoreRended}/50`;
+          const textScore = document.querySelector(".textScore")
+          textScore.textContent = `Score ${scoreLocal}/50`;
 
           section.appendChild(article);
           article.appendChild(header);
           article.appendChild(main);
           header.appendChild(questionTitleH2);
 
-          header.appendChild(textScore).classList.add("textScore");
+          // header.appendChild(textScore).classList.add("textScore");
           main.appendChild(divQuestions).classList.add("questions");
           main.appendChild(figure);
           figure.appendChild(image);
@@ -76,6 +71,8 @@ function createDOM(jsonArray) {
             const buttonAnswers = document.createElement("button");
             buttonAnswers.textContent = answer;
             divQuestions.appendChild(buttonAnswers);
+
+
 
             buttonAnswers.addEventListener("click", () => {
               if (answer === element.correct) {
@@ -101,7 +98,10 @@ function createDOM(jsonArray) {
                 changeQuestion(articles);
               }, 500);
             });
-            main.addEventListener("mousemove", () => { textScore.textContent = `Score ${scoreLocal}/50`; });
+
+
+
+
 
           });
         }
@@ -121,5 +121,4 @@ function changeQuestion(articles) {
 function pruebalocalStorage(score) {
   localStorage.setItem("score", score);
   scoreLocal = Number(localStorage.getItem("score", score));
-  textScoreValue = Number(localStorage.getItem("score", score));
 }
