@@ -16,6 +16,10 @@ async function fetchJSON(URL) {
 fetchJSON(URL)
 
 
+function portada() {
+
+}
+
 function createDOM(jsonArray) {
   let articles = [];
   if (jsonArray) {

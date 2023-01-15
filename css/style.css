@@ -6,7 +6,7 @@
 :root {
   --principal-color: #222;
   --secondary-color: #fff;
-  --tertiary-color: #558cde;
+  --tertiary-color: #ffa440;
   --border-radius: 20px;
   --linear-gradient: linear-gradient(to left, red, yellow) 1;
   --filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
@@ -25,6 +25,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 
 body {
