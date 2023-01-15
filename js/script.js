@@ -19,11 +19,11 @@ fetchJSON(URL)
 function createDOM(jsonArray) {
   let articles = [];
   if (jsonArray) {
-    const value = jsonArray.map((entries, i) => {
+    const value = jsonArray.map((entries, index) => {
       const question = entries.question;
       const answers = entries.answers;
       const correct = entries.correct;
-      const indexQuestions = i;
+      const indexQuestions = index;
       return { question, answers, correct, indexQuestions };
     });
 
@@ -56,85 +56,68 @@ function createDOM(jsonArray) {
           image.src = `img/questions-images/question-${indexImage}.png`;
           image.alt = "caratula de pelicula";
 
-          element.answers.forEach(answer => {
-            const buttonAnswers = document.createElement("button");
-            buttonAnswers.textContent = answer;
-            divQuestions.appendChild(buttonAnswers);
-
-
-            // ****************************************************************************************
-            buttonAnswers.addEventListener("click", () => {
-              if (answer === element.correct) {
-                updateScore()
-                textScore.textContent = `Score ${scoreLocal}/${articles.length}`
-                buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
-              } else {
-                textScore.textContent = `Score ${scoreLocal}/${articles.length}`
-                buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
-              }
-              Array.from(divQuestions.children).forEach(btn => {
-                if (btn.textContent === element.correct) {
-                  btn.style.backgroundColor = "#0aaf0a"; //verde oscuro
-                } else if (btn !== buttonAnswers) {
-                  btn.style.backgroundColor = "#ce1818"; //rojo claro
-                }
-                btn.setAttribute("disabled", true);
-              });
-
-              setTimeout(() => {
-                changeQuestion(articles, section);
-              }, 500);
-            });
-            // buttonAnswers.addEventListener("click", changeBackground(answer, element, textScore, buttonAnswers, articles, divQuestions))
-            // ****************************************************************************************
-
-          });
+          createButtonsForAnswers(element, articles, divQuestions, textScore)
         }
       });
     }
   }
 }
+
+function createButtonsForAnswers(element, articles, divQuestions, textScore) {
+  element.answers.forEach(answer => {
+    const buttonAnswers = document.createElement("button");
+    buttonAnswers.textContent = answer;
+    divQuestions.appendChild(buttonAnswers);
+
+    changeBackground(buttonAnswers, answer, element, textScore, articles, divQuestions)
+  });
+}
+
+function changeBackground(buttonAnswers, answer, element, textScore, articles, divQuestions, section) {
+  buttonAnswers.addEventListener("click", () => {
+    if (answer === element.correct) {
+      updateScore()
+      textScore.textContent = `Score ${scoreLocal}/${articles.length}`
+      buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
+    } else {
+      textScore.textContent = `Score ${scoreLocal}/${articles.length}`
+      buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
+    }
+    Array.from(divQuestions.children).forEach(btn => {
+      if (btn.textContent === element.correct) {
+        btn.style.backgroundColor = "#0aaf0a"; //verde oscuro
+      } else if (btn !== buttonAnswers) {
+        btn.style.backgroundColor = "#ce1818"; //rojo claro
+      }
+      btn.setAttribute("disabled", true);
+    });
+
+    changeQuestion(articles, section);
+  });
+}
+
+function changeQuestion(articles, section) {
+  setTimeout(() => {
+    if (currentQuestion < articles.length - 1) {
+      currentQuestion++;
+      articles[currentQuestion].style.display = "block";
+      articles[currentQuestion - 1].style.display = "none";
+    } else if (currentQuestion === articles.length - 1) {
+      articles[currentQuestion].style.display = "none";
+      const h3score = document.querySelector(".textScore")
+      h3score.style.display = "none";
+      const resultScreen = document.createElement("div");
+      resultScreen.innerHTML = `<h1>Tu puntación es: ${scoreLocal}</h1>`;
+      section.appendChild(resultScreen).classList.add("finalScore");
+      articles.forEach((article) => {
+        article.style.display = "none";
+      });
+    }
+  }, 500);
+
+}
+
 function updateScore() {
   scoreLocal++;
   localStorage.setItem("score", scoreLocal);
 }
-
-function changeQuestion(articles, section) {
-  if (currentQuestion < articles.length - 1) {
-    currentQuestion++;
-    articles[currentQuestion].style.display = "block";
-    articles[currentQuestion - 1].style.display = "none";
-  } else if (currentQuestion === articles.length - 1) {
-    articles[currentQuestion].style.display = "none";
-    const h3score = document.querySelector(".textScore")
-    h3score.style.display = "none";
-    const resultScreen = document.createElement("div");
-    resultScreen.innerHTML = `<h1>Tu puntación es: ${scoreLocal}</h1>`;
-    section.appendChild(resultScreen).classList.add("finalScore");
-    articles.forEach((article) => {
-      article.style.display = "none";
-    });
-  }
-}
-
-// function changeBackground(answer, element, textScore, buttonAnswers, articles, divQuestions) {
-//   if (answer === element.correct) {
-//     updateScore()
-//     textScore.textContent = `Score ${scoreLocal}/${articles.length}`
-//     buttonAnswers.style.backgroundColor = "#0aaf0a";
-//   } else {
-//     textScore.textContent = `Score ${scoreLocal}/${articles.length}`
-//     buttonAnswers.style.backgroundColor = "#880000";
-//   }
-//   Array.from(divQuestions.children).forEach(btn => {
-//     if (btn.textContent === element.correct) {
-//       btn.style.backgroundColor = "#0aaf0a";
-//     } else if (btn !== buttonAnswers) {
-//       btn.style.backgroundColor = "#ce1818";
-//     }
-//     btn.setAttribute("disabled", true);
-//   });
-//   setTimeout(() => {
-//     changeQuestion(articles, section);
-//   }, 500);
-// }
