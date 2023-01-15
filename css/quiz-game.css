@@ -6,8 +6,7 @@
 :root {
   --principal-color: #222;
   --secondary-color: #fff;
-  --tertiary-color: #ffa440;
-  --border-radius: 20px;
+  --tertiary-color: #ff8000;
   --linear-gradient: linear-gradient(to left, red, yellow) 1;
   --filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
   --title-shadow:
@@ -107,10 +106,42 @@ section {
 
 .finalScore {
   text-align: center;
-  background-color: #ffa440;
-  border: 4px solid #474546;
-  padding: 3rem;
-  font-size: 2rem;
+  font-size: 4rem;
+}
+
+
+.finalScore button {
+  width: 14rem;
+  padding: 1.3rem;
+  margin: 3rem;
+  cursor: pointer;
+  border: none;
+  font-size: 1.6rem;
+  color: #FFF;
+  font-weight: bold;
+  position: relative;
+  border-radius: 1rem;
+  background-color: black;
+}
+
+.finalScore button:hover {
+  background-color: #cf620991;
+  transition: 500ms;
+}
+
+.finalScore button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff0000, #ff6100, #ffff00, #ff6100, red, #ff6100, #ffff00, #ff6100);
+  background-size: 800%;
+  border-radius: 0.5rem;
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
 }
 
 /***** article "questions cards" *****/
@@ -126,7 +157,7 @@ section article header {
   padding-left: 6.5rem;
   gap: 1rem;
   border: none;
-  background: #ffa440;
+  background: #ff8b17;
 }
 
 .textScore {
@@ -154,7 +185,7 @@ section article header {
   margin-bottom: 60px;
   margin-left: 5px;
   border-radius: 100px;
-  background-color: #ffa440;
+  background-color: #ff8b17;
   rotate: -15deg;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 }

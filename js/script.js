@@ -56,20 +56,20 @@ function createDOM(jsonArray) {
           image.src = `img/questions-images/question-${indexImage}.png`;
           image.alt = "caratula de pelicula";
 
-          createButtonsForAnswers(element, articles, divQuestions, textScore)
+          createButtonsForAnswers(element, articles, divQuestions, textScore, section)
         }
       });
     }
   }
 }
 
-function createButtonsForAnswers(element, articles, divQuestions, textScore) {
+function createButtonsForAnswers(element, articles, divQuestions, textScore, section) {
   element.answers.forEach(answer => {
     const buttonAnswers = document.createElement("button");
     buttonAnswers.textContent = answer;
     divQuestions.appendChild(buttonAnswers);
 
-    changeBackground(buttonAnswers, answer, element, textScore, articles, divQuestions)
+    changeBackground(buttonAnswers, answer, element, textScore, articles, divQuestions, section)
   });
 }
 
@@ -104,17 +104,27 @@ function changeQuestion(articles, section) {
       articles[currentQuestion - 1].style.display = "none";
     } else if (currentQuestion === articles.length - 1) {
       articles[currentQuestion].style.display = "none";
-      const h3score = document.querySelector(".textScore")
+      const h3score = document.querySelector(".textScore");
       h3score.style.display = "none";
-      const resultScreen = document.createElement("div");
-      resultScreen.innerHTML = `<h1>Tu puntación es: ${scoreLocal}</h1>`;
-      section.appendChild(resultScreen).classList.add("finalScore");
+
+      const resultDiv = document.createElement("div");
+      const ancorButton = document.createElement('a');
+      const returnButton = document.createElement('button');
+
+      section.appendChild(resultDiv).classList.add("finalScore");
+      resultDiv.appendChild(ancorButton)
+      ancorButton.appendChild(returnButton)
+
+      ancorButton.href = 'index.html';
+
+      resultDiv.innerHTML = `Your score is: ${scoreLocal}/${articles.length}`;
+      returnButton.innerHTML = 'Return';
+
       articles.forEach((article) => {
         article.style.display = "none";
       });
     }
   }, 500);
-
 }
 
 function updateScore() {
