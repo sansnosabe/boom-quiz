@@ -6,9 +6,8 @@
 :root {
   --principal-color: #222;
   --secondary-color: #fff;
-  --tertiary-color: #ff8418;
-  --border-radius: 20px;
   --linear-gradient: linear-gradient(to left, red, yellow) 1;
+  --background-gradient: linear-gradient(90deg, yellow 10%, red 90%);
   --filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
   --title-shadow:
     -3px -3px 0 #db2929,
@@ -32,7 +31,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: var(--secondary-color);
 }
 
 body {
@@ -64,7 +63,7 @@ header {
   grid-area: header;
   padding: 3rem;
   border-top: 1rem solid transparent;
-  border-image: linear-gradient(to left, red, yellow) 1;
+  border-image: var(--linear-gradient);
 }
 
 header img {
@@ -98,7 +97,7 @@ section {
   flex-direction: column;
   justify-content: center;
   border-top: 1rem solid transparent;
-  border-image: linear-gradient(to left, red, yellow) 1;
+  border-image: var(--linear-gradient);
 }
 
 section header {
@@ -115,11 +114,11 @@ button {
   cursor: pointer;
   border: none;
   font-size: 1.6rem;
-  color: #FFF;
+  color: var(--secondary-color);
   font-weight: bold;
   position: relative;
   border-radius: 1rem;
-  background-color: black;
+  background-color: #000000;
 }
 
 button:hover {
@@ -135,7 +134,7 @@ button::before {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #ff0000, #ff6100, #ffff00, #ff6100, red, #ff6100, #ffff00, #ff6100);
+  background: linear-gradient(45deg, #ff0000, #ff6100, #ffff00, #ff6100, #ff0000, #ff6100, #ffff00, #ff6100);
   background-size: 800%;
   border-radius: 0.5rem;
   filter: blur(8px);
@@ -162,8 +161,8 @@ button::before {
 footer {
   grid-area: footer;
   font-weight: 600;
-  color: #222;
-  background: linear-gradient(90deg, yellow 10%, red 90%);
+  color: var(--principal-color);
+  background: var(--background-gradient);
 }
 
 
@@ -173,6 +172,14 @@ footer {
 @media (min-width: 600px) {
   section {
     max-width: 800px;
+  }
+
+  header img {
+    width: 16rem;
+  }
+
+  header h1 {
+    font-size: 7rem;
   }
 }
 
