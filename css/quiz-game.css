@@ -209,7 +209,7 @@ section article header {
   content: "";
   width: 100px;
   height: 100px;
-  background-image: url(img/pushpin.svg);
+  background-image: url(../img/pushpin.svg);
   background-repeat: no-repeat;
   position: absolute;
   margin-bottom: 55px;
