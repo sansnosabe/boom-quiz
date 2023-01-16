@@ -206,7 +206,7 @@ section article header {
 }
 
 .textScore::after {
-  content: url(/img/pushpin.svg);
+  content: url(img/pushpin.svg);
   position: absolute;
   margin-bottom: 100px;
   margin-left: 51px;
