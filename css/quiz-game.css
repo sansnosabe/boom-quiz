@@ -206,10 +206,14 @@ section article header {
 }
 
 .textScore::after {
-  content: url(https://raw.githubusercontent.com/sansnosabe/bomm-quiz/74284bb6271220cecd170bdd82f8fb1fbb020c9d/img/pushpin.svg);
+  content: "";
+  width: 100px;
+  height: 100px;
+  background-image: url(/img/pushpin.svg);
+  background-repeat: no-repeat;
   position: absolute;
-  margin-bottom: 100px;
-  margin-left: 51px;
+  margin-bottom: 55px;
+  margin-left: 100px;
 }
 
 section article main {
