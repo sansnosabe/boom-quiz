@@ -1,4 +1,6 @@
-const URL = 'https://gist.githubusercontent.com/bertez/2528edb2ab7857dae29c39d1fb669d31/raw/4891dde8eac038aa5719512adee4b4243a8063fd/quiz.json';
+'use estrict'
+
+const URL = "https://gist.githubusercontent.com/bertez/2528edb2ab7857dae29c39d1fb669d31/raw/4891dde8eac038aa5719512adee4b4243a8063fd/quiz.json";
 let score = 0;
 let scoreLocal = 0;
 let currentQuestion = 0;
@@ -8,13 +10,12 @@ async function fetchJSON(URL) {
     const response = await fetch(URL);
     const data = await response.json();
     const jsonArray = data;
-    createDOM(jsonArray)
+    createDOM(jsonArray);
   } catch (error) {
     console.error(error.message);
   }
 }
-fetchJSON(URL)
-
+fetchJSON(URL);
 
 function createDOM(jsonArray) {
   let articles = [];
@@ -29,16 +30,14 @@ function createDOM(jsonArray) {
 
     const section = document.querySelector("section");
     if (section) {
-      value.forEach(element => {
-        const index = Object.keys(jsonArray).findIndex(
-          key => jsonArray[key].question === element.question
-        );
+      value.forEach((element) => {
+        const index = Object.keys(jsonArray).findIndex((key) => jsonArray[key].question === element.question);
         if (element.indexQuestions === index) {
-          const arrayElementsToCreate = ["article", "header", "main", "h2", "div", "figure", "img"]
-          const elements = arrayElementsToCreate.map(element => document.createElement(element));
+          const arrayElementsToCreate = ["article", "header", "main", "h2", "div", "figure", "img"];
+          const elements = arrayElementsToCreate.map((element) => document.createElement(element));
           const [article, header, main, questionTitleH2, divQuestions, figure, image] = elements;
           const indexImage = index.toString().padStart(2, "0");
-          const textScore = document.querySelector(".textScore")
+          const textScore = document.querySelector(".textScore");
 
           articles.push(article);
           textScore.textContent = `Score ${scoreLocal}/${articles.length}`;
@@ -56,38 +55,48 @@ function createDOM(jsonArray) {
           image.src = `img/questions-images/question-${indexImage}.png`;
           image.alt = "caratula de pelicula";
 
-          createButtonsForAnswers(element, articles, divQuestions, textScore)
+          createButtonsForAnswers(element, articles, divQuestions, textScore);
         }
       });
     }
   }
 }
 
+function mixAnswers(array) {
+  array.forEach((element, index) => {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    array[index] = array[randomIndex];
+    array[randomIndex] = element;
+  });
+  return array;
+}
+
 function createButtonsForAnswers(element, articles, divQuestions, textScore) {
-  element.answers.forEach(answer => {
+  mixAnswers(element.answers);
+  element.answers.forEach((answer) => {
     const buttonAnswers = document.createElement("button");
     buttonAnswers.textContent = answer;
     divQuestions.appendChild(buttonAnswers);
 
-    changeBackground(buttonAnswers, answer, element, textScore, articles, divQuestions)
+    changeBackground(buttonAnswers, answer, element, textScore, articles, divQuestions);
   });
 }
 
 function changeBackground(buttonAnswers, answer, element, textScore, articles, divQuestions) {
   buttonAnswers.addEventListener("click", () => {
     if (answer === element.correct) {
-      updateScore()
-      textScore.textContent = `Score ${scoreLocal}/${articles.length}`
-      buttonAnswers.style.backgroundColor = "#0aaf0a"; //verde oscuro
+      updateScore();
+      textScore.textContent = `Score ${scoreLocal}/${articles.length}`;
+      buttonAnswers.style.backgroundColor = "#0aaf0a";
     } else {
-      textScore.textContent = `Score ${scoreLocal}/${articles.length}`
-      buttonAnswers.style.backgroundColor = "#880000"; // rojo oscuro
+      textScore.textContent = `Score ${scoreLocal}/${articles.length}`;
+      buttonAnswers.style.backgroundColor = "#880000";
     }
-    Array.from(divQuestions.children).forEach(btn => {
+    Array.from(divQuestions.children).forEach((btn) => {
       if (btn.textContent === element.correct) {
-        btn.style.backgroundColor = "#0aaf0a"; //verde oscuro
+        btn.style.backgroundColor = "#0aaf0a";
       } else if (btn !== buttonAnswers) {
-        btn.style.backgroundColor = "#ce1818"; //rojo claro
+        btn.style.backgroundColor = "#ce1818";
       }
       btn.setAttribute("disabled", true);
     });
@@ -107,19 +116,19 @@ function changeQuestion(articles) {
       const h3score = document.querySelector(".textScore");
       h3score.style.display = "none";
 
-      const resultDiv = document.querySelector('.finalScore');
+      const resultDiv = document.querySelector(".finalScore");
 
-      const resultTitle = document.createElement('h3');
-      const ancorButton = document.createElement('a');
-      const returnButton = document.createElement('button');
+      const resultTitle = document.createElement("h3");
+      const ancorButton = document.createElement("a");
+      const returnButton = document.createElement("button");
 
-      resultDiv.appendChild(resultTitle)
-      resultDiv.appendChild(ancorButton)
-      ancorButton.appendChild(returnButton)
+      resultDiv.appendChild(resultTitle);
+      resultDiv.appendChild(ancorButton);
+      ancorButton.appendChild(returnButton);
 
       resultTitle.innerHTML = `Your score is: ${scoreLocal}/${articles.length}`;
-      ancorButton.href = 'index.html';
-      returnButton.innerHTML = 'Return';
+      ancorButton.href = "index.html";
+      returnButton.innerHTML = "Return";
 
       articles.forEach((article) => {
         article.style.display = "none";
