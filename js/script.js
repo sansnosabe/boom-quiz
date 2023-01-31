@@ -88,17 +88,18 @@ function changeBackground(buttonAnswers, answer, element, textScore, articles, d
       updateScore();
       textScore.textContent = `Score ${scoreLocal}/${articles.length}`;
       buttonAnswers.style.backgroundColor = "#0aaf0a";
-    } else {
+    } 
+    else {
       textScore.textContent = `Score ${scoreLocal}/${articles.length}`;
-      buttonAnswers.style.backgroundColor = "#880000";
+      buttonAnswers.style.backgroundColor = "#ce1818";
     }
+
     Array.from(divQuestions.children).forEach((btn) => {
       if (btn.textContent === element.correct) {
         btn.style.backgroundColor = "#0aaf0a";
-      } else if (btn !== buttonAnswers) {
-        btn.style.backgroundColor = "#ce1818";
       }
       btn.setAttribute("disabled", true);
+      btn.classList.remove("hover-class")
     });
 
     changeQuestion(articles);
@@ -134,7 +135,7 @@ function changeQuestion(articles) {
         article.style.display = "none";
       });
     }
-  }, 500);
+  }, 900);
 }
 
 function updateScore() {
