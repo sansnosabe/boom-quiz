@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+80s+Fade&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+80s+Fade&display=swap");
 
 /***********************/
 /******* GENERAL *******/
@@ -10,15 +10,7 @@
   --linear-gradient: linear-gradient(to left, red, yellow) 1;
   --background-gradient: linear-gradient(90deg, yellow 10%, red 90%);
   --filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
-  --title-shadow:
-    -3px -3px 0 #db2929,
-    3px -3px 0 #db5b29,
-    -3px 3px 0 #db7929,
-    3px 3px 0 #dba329,
-    5px 5px 0 #000,
-    6px 6px 0 #000,
-    7px 7px 0 #000,
-    8px 8px 0 #000;
+  --title-shadow: -3px -3px 0 #db2929, 3px -3px 0 #db5b29, -3px 3px 0 #db7929, 3px 3px 0 #dba329, 5px 5px 0 #000, 6px 6px 0 #000, 7px 7px 0 #000, 8px 8px 0 #000;
 }
 
 * {
@@ -37,7 +29,7 @@ a {
 
 body {
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--principal-color);
   color: var(--secondary-color);
   display: grid;
@@ -109,7 +101,6 @@ section {
   text-align: center;
   font-size: 4rem;
 }
-
 
 .finalScore button {
   width: 14rem;
@@ -190,7 +181,6 @@ section article header {
   rotate: -15deg;
   background-color: #22b8ee;
   box-shadow: -3px 2px 5px 0px rgba(0, 0, 0, 0.2);
-
 }
 
 .textScore::before {
@@ -266,6 +256,20 @@ footer {
   font-weight: 600;
   color: var(--principal-color);
   background: var(--background-gradient);
+}
+
+footer p {
+  display: flex;
+  gap: 5px;
+}
+
+footer p a {
+  color: var(--principal-color);
+  transition: color 0.3s;
+}
+
+footer p a:hover {
+  color: var(--secondary-color);
 }
 
 /*********************/
