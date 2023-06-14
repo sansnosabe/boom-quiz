@@ -9,14 +9,14 @@ let scoreLocal = 0;
 let currentQuestion = 0;
 let timeLeft;
 let timer;
-let timerDiv; //NEW
+let timerDiv;
 
 async function fetchJSON(URL) {
 	try {
 		const response = await fetch(URL);
 		const data = await response.json();
-		const jsonArray = data.slice(0, numberOfQuestions);
-		// const jsonArray = data;
+		// const jsonArray = data.slice(0, numberOfQuestions);
+		const jsonArray = data;
 		createDOM(jsonArray);
 	} catch (error) {
 		console.error(error.message);
@@ -98,17 +98,15 @@ document.addEventListener("DOMContentLoaded", function () {
 function startTimer(articles) {
 	timeLeft = 10;
 	timerDiv.style.width = "100%";
-	// timerDiv.style.transition = `width 1s linear`;
 	updateTimer(articles);
 }
 
 function updateTimer(articles) {
 	const timerSpan = document.querySelector(".timer");
 	// timerSpan.textContent = timeLeft;
-
 	timer = setInterval(() => {
 		timeLeft--;
-		timerSpan.textContent = timeLeft;
+		// timerSpan.textContent = timeLeft;
 
 		if (timeLeft <= 0) {
 			clearInterval(timer);
