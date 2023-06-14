@@ -11,6 +11,10 @@ let timeLeft;
 let timer;
 let timerDiv;
 
+document.addEventListener("DOMContentLoaded", function () {
+	timerDiv = document.querySelector(".timer");
+});
+
 async function fetchJSON(URL) {
 	try {
 		const response = await fetch(URL);
@@ -90,11 +94,6 @@ function createButtonsForAnswers(element, articles, divQuestions, textScore) {
 	});
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-	timerDiv = document.querySelector(".timer");
-	startTimer(articles);
-});
-
 function startTimer(articles) {
 	timeLeft = 10;
 	timerDiv.style.width = "100%";
@@ -102,15 +101,14 @@ function startTimer(articles) {
 }
 
 function updateTimer(articles) {
-	const timerSpan = document.querySelector(".timer");
-	// timerSpan.textContent = timeLeft;
+	// timerDiv.textContent = timeLeft;
 	timer = setInterval(() => {
 		timeLeft--;
-		// timerSpan.textContent = timeLeft;
+		// timerDiv.textContent = timeLeft;
 
 		if (timeLeft <= 0) {
 			clearInterval(timer);
-			timerSpan.style.width = "0%";
+			timerDiv.style.width = "100%";
 			changeQuestion(articles);
 		} else {
 			timerDiv.style.width = ((timeLeft - 1) / 10) * 100 + "%";
