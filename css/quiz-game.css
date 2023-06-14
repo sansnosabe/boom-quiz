@@ -98,6 +98,12 @@ section {
 	margin: 2rem;
 }
 
+.timer{
+	height: 30px;
+	transition: width 1s linear;
+	background-color: green;
+}
+
 .finalScore {
 	text-align: center;
 	font-size: 4rem;
@@ -177,7 +183,7 @@ section article header {
 	border-radius: 100px;
 	width: 90px;
 	height: 90px;
-	margin-top: 1.5em;
+	margin-top: 2.6em;
 	margin-left: calc(1em - 10px);
 	rotate: -15deg;
 	background-color: #22b8ee;

@@ -9,13 +9,14 @@ let scoreLocal = 0;
 let currentQuestion = 0;
 let timeLeft;
 let timer;
+let timerDiv; //NEW
 
 async function fetchJSON(URL) {
 	try {
 		const response = await fetch(URL);
 		const data = await response.json();
-		// const jsonArray = data.slice(0, numberOfQuestions);
-		const jsonArray = data;
+		const jsonArray = data.slice(0, numberOfQuestions);
+		// const jsonArray = data;
 		createDOM(jsonArray);
 	} catch (error) {
 		console.error(error.message);
@@ -89,24 +90,34 @@ function createButtonsForAnswers(element, articles, divQuestions, textScore) {
 	});
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+	timerDiv = document.querySelector(".timer");
+	startTimer(articles);
+});
+
 function startTimer(articles) {
 	timeLeft = 10;
+	timerDiv.style.width = "100%";
+	// timerDiv.style.transition = `width 1s linear`;
 	updateTimer(articles);
 }
 
 function updateTimer(articles) {
 	const timerSpan = document.querySelector(".timer");
-	timerSpan.textContent = timeLeft;
+	// timerSpan.textContent = timeLeft;
 
-	if (timeLeft <= 0) {
-		clearTimeout(timer);
-		changeQuestion(articles);
-	} else {
-		timer = setTimeout(() => {
-			timeLeft--;
-			updateTimer(articles);
-		}, 1000);
-	}
+	timer = setInterval(() => {
+		timeLeft--;
+		timerSpan.textContent = timeLeft;
+
+		if (timeLeft <= 0) {
+			clearInterval(timer);
+			timerSpan.style.width = "0%";
+			changeQuestion(articles);
+		} else {
+			timerDiv.style.width = ((timeLeft - 1) / 10) * 100 + "%";
+		}
+	}, 1000);
 }
 
 function changeBackground(buttonAnswers, answer, element, textScore, articles, divQuestions) {
