@@ -4,200 +4,201 @@
 /******* GENERAL *******/
 /***********************/
 :root {
-  --principal-color: #222;
-  --secondary-color: #fff;
-  --linear-gradient: linear-gradient(to left, red, yellow) 1;
-  --background-gradient: linear-gradient(90deg, yellow 10%, red 90%);
-  --filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
-  --title-shadow: -3px -3px 0 #db2929, 3px -3px 0 #db5b29, -3px 3px 0 #db7929, 3px 3px 0 #dba329, 5px 5px 0 #000, 6px 6px 0 #000, 7px 7px 0 #000, 8px 8px 0 #000;
+	--principal-color: #222;
+	--secondary-color: #fff;
+	--linear-gradient: linear-gradient(to left, red, yellow) 1;
+	--background-gradient: linear-gradient(90deg, yellow 10%, red 90%);
+	--filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
+	--title-shadow: -3px -3px 0 #db2929, 3px -3px 0 #db5b29, -3px 3px 0 #db7929, 3px 3px 0 #dba329, 5px 5px 0 #000, 6px 6px 0 #000, 7px 7px 0 #000,
+		8px 8px 0 #000;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 a {
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--secondary-color);
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--secondary-color);
 }
 
 body {
-  height: 100vh;
-  font-family: "Roboto", sans-serif;
-  background-color: var(--principal-color);
-  color: var(--secondary-color);
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto auto 3rem;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
+	height: 100vh;
+	font-family: "Roboto", sans-serif;
+	background-color: var(--principal-color);
+	color: var(--secondary-color);
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: auto auto 3rem;
+	grid-template-areas:
+		"header"
+		"main"
+		"footer";
 }
 
 header,
 main,
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 footer p {
-  display: flex;
-  gap: 5px;
+	display: flex;
+	gap: 5px;
 }
 
 footer p a {
-  color: var(--principal-color);
-  transition: color 0.3s;
+	color: var(--principal-color);
+	transition: color 0.3s;
 }
 
 footer p a:hover {
-  color: var(--secondary-color);
+	color: var(--secondary-color);
 }
 
 /**********************/
 /******* HEADER *******/
 /**********************/
 header {
-  grid-area: header;
-  padding: 3rem;
-  border-top: 1rem solid transparent;
-  border-image: var(--linear-gradient);
+	grid-area: header;
+	padding: 3rem;
+	border-top: 1rem solid transparent;
+	border-image: var(--linear-gradient);
 }
 
 header img {
-  width: 12rem;
-  position: absolute;
-  padding-left: 1.2rem;
-  filter: var(--filter-shadow);
+	width: 12rem;
+	position: absolute;
+	padding-left: 1.2rem;
+	filter: var(--filter-shadow);
 }
 
 header h1 {
-  color: #000;
-  font-weight: 800;
-  font-size: 5rem;
-  padding-top: 4rem;
-  padding-right: 1rem;
-  text-shadow: var(--title-shadow);
-  filter: var(--filter-shadow);
+	color: #000;
+	font-weight: 800;
+	font-size: 5rem;
+	padding-top: 4rem;
+	padding-right: 1rem;
+	text-shadow: var(--title-shadow);
+	filter: var(--filter-shadow);
 }
 
 /********************/
 /******* MAIN *******/
 /********************/
 main {
-  grid-area: main;
-  display: grid;
-  padding: 0 2rem;
+	grid-area: main;
+	display: grid;
+	padding: 0 2rem;
 }
 
 section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-top: 1rem solid transparent;
-  border-image: var(--linear-gradient);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-top: 1rem solid transparent;
+	border-image: var(--linear-gradient);
 }
 
 section header {
-  border: none;
-  padding-bottom: 0;
+	border: none;
+	padding-bottom: 0;
 }
 
 section header h2 {
-  font-size: 1.8rem;
-  /* letter-spacing: 1px; */
-  text-align: center;
+	font-size: 1.8rem;
+	/* letter-spacing: 1px; */
+	text-align: center;
 }
 
 button {
-  width: 14rem;
-  padding: 1.3rem;
-  margin: 3rem;
-  cursor: pointer;
-  border: none;
-  font-size: 1.6rem;
-  color: var(--secondary-color);
-  font-weight: bold;
-  position: relative;
-  border-radius: 1rem;
-  background-color: #000000;
+	width: 14rem;
+	padding: 1.3rem;
+	margin: 3rem;
+	cursor: pointer;
+	border: none;
+	font-size: 1.6rem;
+	color: var(--secondary-color);
+	font-weight: bold;
+	position: relative;
+	border-radius: 1rem;
+	background-color: #000000;
 }
 
 button:hover {
-  background-color: #cf620991;
-  transition: 500ms;
+	background-color: #cf620991;
+	transition: 500ms;
 }
 
 button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #ff0000, #ff6100, #ffff00, #ff6100, #ff0000, #ff6100, #ffff00, #ff6100);
-  background-size: 800%;
-  border-radius: 0.5rem;
-  filter: blur(8px);
-  animation: glowing 20s linear infinite;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(45deg, #ff0000, #ff6100, #ffff00, #ff6100, #ff0000, #ff6100, #ffff00, #ff6100);
+	background-size: 800%;
+	border-radius: 0.5rem;
+	filter: blur(8px);
+	animation: glowing 20s linear infinite;
 }
 
 @keyframes glowing {
-  0% {
-    background-position: 0 0;
-  }
+	0% {
+		background-position: 0 0;
+	}
 
-  50% {
-    background-position: 400% 0;
-  }
+	50% {
+		background-position: 400% 0;
+	}
 
-  100% {
-    background-position: 0 0;
-  }
+	100% {
+		background-position: 0 0;
+	}
 }
 
 /**********************/
 /******* FOOTER *******/
 /**********************/
 footer {
-  grid-area: footer;
-  font-weight: 600;
-  color: var(--principal-color);
-  background: var(--background-gradient);
+	grid-area: footer;
+	font-weight: 600;
+	color: var(--principal-color);
+	background: var(--background-gradient);
 }
 
 /*********************/
 /******* MEDIA *******/
 /*********************/
 @media (min-width: 600px) {
-  section {
-    max-width: 800px;
-  }
+	section {
+		max-width: 800px;
+	}
 
-  header img {
-    width: 16rem;
-  }
+	header img {
+		width: 16rem;
+	}
 
-  header h1 {
-    font-size: 7rem;
-  }
+	header h1 {
+		font-size: 7rem;
+	}
 }
 
 @media (min-width: 1024px) {
-  header img {
-    width: 18rem;
-  }
+	header img {
+		width: 18rem;
+	}
 
-  header h1 {
-    font-size: 9rem;
-  }
+	header h1 {
+		font-size: 9rem;
+	}
 }

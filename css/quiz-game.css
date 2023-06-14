@@ -4,324 +4,325 @@
 /******* GENERAL *******/
 /***********************/
 :root {
-  --principal-color: #222222;
-  --secondary-color: #ffffff;
-  --tertiary-color: #ff8b17;
-  --linear-gradient: linear-gradient(to left, red, yellow) 1;
-  --background-gradient: linear-gradient(90deg, yellow 10%, red 90%);
-  --filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
-  --title-shadow: -3px -3px 0 #db2929, 3px -3px 0 #db5b29, -3px 3px 0 #db7929, 3px 3px 0 #dba329, 5px 5px 0 #000, 6px 6px 0 #000, 7px 7px 0 #000, 8px 8px 0 #000;
+	--principal-color: #222222;
+	--secondary-color: #ffffff;
+	--tertiary-color: #ff8b17;
+	--linear-gradient: linear-gradient(to left, red, yellow) 1;
+	--background-gradient: linear-gradient(90deg, yellow 10%, red 90%);
+	--filter-shadow: drop-shadow(-2px 2px 15px #ffffff96);
+	--title-shadow: -3px -3px 0 #db2929, 3px -3px 0 #db5b29, -3px 3px 0 #db7929, 3px 3px 0 #dba329, 5px 5px 0 #000, 6px 6px 0 #000, 7px 7px 0 #000,
+		8px 8px 0 #000;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 a {
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--secondary-color);
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--secondary-color);
 }
 
 body {
-  height: 100vh;
-  font-family: "Roboto", sans-serif;
-  background-color: var(--principal-color);
-  color: var(--secondary-color);
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 3rem auto 3rem;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
+	height: 100vh;
+	font-family: "Roboto", sans-serif;
+	background-color: var(--principal-color);
+	color: var(--secondary-color);
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 3rem auto 3rem;
+	grid-template-areas:
+		"header"
+		"main"
+		"footer";
 }
 
 header,
 main,
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /**********************/
 /******* HEADER *******/
 /**********************/
 header {
-  grid-area: header;
-  display: flex;
-  justify-content: flex-start;
-  padding: 0 2rem;
-  background: var(--background-gradient);
+	grid-area: header;
+	display: flex;
+	justify-content: flex-start;
+	padding: 0 2rem;
+	background: var(--background-gradient);
 }
 
 header img {
-  width: 3rem;
-  margin-bottom: 4px;
-  filter: var(--filter-shadow);
+	width: 3rem;
+	margin-bottom: 4px;
+	filter: var(--filter-shadow);
 }
 
 header h1 {
-  color: #000000;
-  font-weight: 800;
-  font-size: 2rem;
-  text-shadow: var(--title-shadow);
-  filter: var(--filter-shadow);
+	color: #000000;
+	font-weight: 800;
+	font-size: 2rem;
+	text-shadow: var(--title-shadow);
+	filter: var(--filter-shadow);
 }
 
 /********************/
 /******* MAIN *******/
 /********************/
 main {
-  grid-area: main;
-  display: grid;
+	grid-area: main;
+	display: grid;
 }
 
 span {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 3rem 1rem;
-  margin-bottom: 0;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 3rem 1rem;
+	margin-bottom: 0;
 }
 
 section {
-  position: relative;
-  width: auto;
-  display: grid;
-  margin: 2rem;
+	position: relative;
+	width: auto;
+	display: grid;
+	margin: 2rem;
 }
 
 .finalScore {
-  text-align: center;
-  font-size: 4rem;
+	text-align: center;
+	font-size: 4rem;
 }
 
 .finalScore button {
-  width: 14rem;
-  padding: 1.3rem;
-  margin: 3rem;
-  cursor: pointer;
-  border: none;
-  font-size: 1.6rem;
-  color: var(--secondary-color);
-  font-weight: bold;
-  position: relative;
-  border-radius: 1rem;
-  background-color: #000000;
+	width: 14rem;
+	padding: 1.3rem;
+	margin: 3rem;
+	cursor: pointer;
+	border: none;
+	font-size: 1.6rem;
+	color: var(--secondary-color);
+	font-weight: bold;
+	position: relative;
+	border-radius: 1rem;
+	background-color: #000000;
 }
 
 .finalScore button:hover {
-  background-color: #cf620991;
-  transition: 500ms;
+	background-color: #cf620991;
+	transition: 500ms;
 }
 
 .finalScore button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #ff0000, #ff6100, #ffff00, #ff6100, #ff0000, #ff6100, #ffff00, #ff6100);
-  background-size: 800%;
-  border-radius: 0.5rem;
-  filter: blur(8px);
-  animation: glowing 20s linear infinite;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(45deg, #ff0000, #ff6100, #ffff00, #ff6100, #ff0000, #ff6100, #ffff00, #ff6100);
+	background-size: 800%;
+	border-radius: 0.5rem;
+	filter: blur(8px);
+	animation: glowing 20s linear infinite;
 }
 
 @keyframes glowing {
-  0% {
-    background-position: 0 0;
-  }
+	0% {
+		background-position: 0 0;
+	}
 
-  50% {
-    background-position: 400% 0;
-  }
+	50% {
+		background-position: 400% 0;
+	}
 
-  100% {
-    background-position: 0 0;
-  }
+	100% {
+		background-position: 0 0;
+	}
 }
 
 /***** article "questions cards" *****/
 section article header {
-  min-height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: right;
-  text-align: center;
-  font-size: 1.2rem;
-  padding: 2rem;
-  padding-left: 6.5rem;
-  gap: 1rem;
-  border: none;
-  background: var(--tertiary-color);
+	min-height: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: right;
+	text-align: center;
+	font-size: 1.2rem;
+	padding: 2rem;
+	padding-left: 6.5rem;
+	gap: 1rem;
+	border: none;
+	background: var(--tertiary-color);
 }
 
 .textScore {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.4rem;
-  border-radius: 100px;
-  width: 90px;
-  height: 90px;
-  margin-top: 1.5em;
-  margin-left: calc(1em - 10px);
-  rotate: -15deg;
-  background-color: #22b8ee;
-  box-shadow: -3px 2px 5px 0px rgba(0, 0, 0, 0.2);
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 1.4rem;
+	border-radius: 100px;
+	width: 90px;
+	height: 90px;
+	margin-top: 1.5em;
+	margin-left: calc(1em - 10px);
+	rotate: -15deg;
+	background-color: #22b8ee;
+	box-shadow: -3px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 .textScore::before {
-  content: "";
-  position: absolute;
-  padding: 5px;
-  margin-bottom: 60px;
-  margin-left: 5px;
-  border-radius: 100px;
-  background-color: var(--tertiary-color);
-  rotate: -15deg;
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+	content: "";
+	position: absolute;
+	padding: 5px;
+	margin-bottom: 60px;
+	margin-left: 5px;
+	border-radius: 100px;
+	background-color: var(--tertiary-color);
+	rotate: -15deg;
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .textScore::after {
-  content: "";
-  width: 100px;
-  height: 100px;
-  background-image: url(../img/pushpin.svg);
-  background-repeat: no-repeat;
-  position: absolute;
-  margin-bottom: 55px;
-  margin-left: 100px;
+	content: "";
+	width: 100px;
+	height: 100px;
+	background-image: url(../img/pushpin.svg);
+	background-repeat: no-repeat;
+	position: absolute;
+	margin-bottom: 55px;
+	margin-left: 100px;
 }
 
 section article main {
-  min-width: 10rem;
-  min-height: 300px;
-  display: grid;
-  background: #474546;
+	min-width: 10rem;
+	min-height: 300px;
+	display: grid;
+	background: #474546;
 }
 
 section article main .questions {
-  display: grid;
-  gap: 1rem;
-  padding: 1rem;
+	display: grid;
+	gap: 1rem;
+	padding: 1rem;
 }
 
 section article button {
-  min-height: 4rem;
-  min-width: 350px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 1rem;
-  border: none;
-  background-color: #22b8ee;
-  color: var(--secondary-color);
+	min-height: 4rem;
+	min-width: 350px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: 1rem;
+	border: none;
+	background-color: #22b8ee;
+	color: var(--secondary-color);
 }
 
 article button:hover {
-  background-color: #ffa440;
-  cursor: pointer;
-  transition: 300ms;
+	background-color: #ffa440;
+	cursor: pointer;
+	transition: 300ms;
 }
 
 section article main figure {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 section article main figure img {
-  width: 100%;
-  height: 100%;
-  padding: 0 1rem 1rem 1rem;
+	width: 100%;
+	height: 100%;
+	padding: 0 1rem 1rem 1rem;
 }
 
 /**********************/
 /******* FOOTER *******/
 /**********************/
 footer {
-  grid-area: footer;
-  font-weight: 600;
-  color: var(--principal-color);
-  background: var(--background-gradient);
+	grid-area: footer;
+	font-weight: 600;
+	color: var(--principal-color);
+	background: var(--background-gradient);
 }
 
 footer p {
-  display: flex;
-  gap: 5px;
+	display: flex;
+	gap: 5px;
 }
 
 footer p a {
-  color: var(--principal-color);
-  transition: color 0.3s;
+	color: var(--principal-color);
+	transition: color 0.3s;
 }
 
 footer p a:hover {
-  color: var(--secondary-color);
+	color: var(--secondary-color);
 }
 
 /*********************/
 /******* MEDIA *******/
 /*********************/
 @media (min-width: 600px) {
-  article {
-    max-width: 900px;
-  }
+	article {
+		max-width: 900px;
+	}
 
-  article main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
+	article main {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
 
-  section article main .questions {
-    justify-content: center;
-    align-items: center;
-  }
+	section article main .questions {
+		justify-content: center;
+		align-items: center;
+	}
 
-  section article main figure {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+	section article main figure {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
-  section article main figure img {
-    padding: 1rem;
-    max-width: 349px;
-    max-height: 349px;
-  }
+	section article main figure img {
+		padding: 1rem;
+		max-width: 349px;
+		max-height: 349px;
+	}
 }
 
 @media (min-width: 1024px) {
-  section article header h2 {
-    font-size: 2rem;
-  }
+	section article header h2 {
+		font-size: 2rem;
+	}
 
-  section article main .questions {
-    padding-left: 4rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
+	section article main .questions {
+		padding-left: 4rem;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
 
-  section article button {
-    min-width: 400px;
-    font-size: 1.4rem;
-  }
+	section article button {
+		min-width: 400px;
+		font-size: 1.4rem;
+	}
 
-  section article main figure img {
-    padding: 1rem;
-    max-width: 355px;
-    max-height: 355px;
-  }
+	section article main figure img {
+		padding: 1rem;
+		max-width: 355px;
+		max-height: 355px;
+	}
 }
